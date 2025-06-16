@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./navbar.css">
+    <link rel="stylesheet" href="footer.css">
+    <title>Inscription</title>
+</head>
+<body>
+    <header>
+        <div id="section">
+            <div id="header-title">
+                <div>
+                    <a href="./index.html">
+                        <img alt="Logo Robots-Délices" id="logo" src="./img/logo_robots_delices.png" />
+                    </a>
+                </div>
+            </div>
+            
+            <!-- NOUVEAU : Input checkbox caché pour contrôler le menu -->
+            <input type="checkbox" id="menu-toggle">
+            
+            <!-- NOUVEAU : Label qui sert de bouton burger -->
+            <label for="menu-toggle" class="burger-menu" aria-label="Menu">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </label>
+            
+            <div id="nav-container" class="nav-container">
+                <ul class="nav-menu">
+                    <li class="li"><a href="./index.html">Accueil</a></li>
+                    <li class="li"><a href="#recettes">Recettes</a></li>
+                    <li class="li"><a href="#categories">Catégories</a></li>
+                    <li class="li"><a href="#favoris">Mes favoris</a></li>
+                    <li class="li"><a href="#ajouts-recettes">+ Ajouter une recette</a></li>
+                    <li class="li"><a href="./login.html">Connexion</a></li>
+                </ul>
+            </div>
+            
+            <!-- NOUVEAU : Overlay pour fermer le menu -->
+            <label for="menu-toggle" class="menu-overlay"></label>
+        </div>
+    </header>
+    <main>
+        <h1>Inscrivez-vous sur Robots-Délices</h1>
+        <form id="register-form" action="/register" method="POST">
+            <div>
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div>
+                <label for="confirm-password">Confirmer le mot de passe :</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+            <button type="submit">S'inscrire</button>
+        </form>
+        <p>Déjà inscrit ? <a href="./login.html">Se connecter</a></p>
+    </main>
+    <footer>
+        <p>© 2025 Robots-Délices. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

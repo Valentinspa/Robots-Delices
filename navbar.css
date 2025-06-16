@@ -1,0 +1,473 @@
+/* Styles de base pour la navbar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Header principal */
+header {
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+#section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 120px;
+    position: relative;
+}
+
+/* Logo */
+#header-title {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    z-index: 2;
+}
+
+#header-title a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+#header-title a:hover {
+    transform: scale(1.02);
+}
+
+#logo {
+    height: 100px;
+    width: auto;
+}
+
+/* Input checkbox caché pour contrôler le menu */
+#menu-toggle {
+    display: none;
+}
+
+/* Label qui sert de bouton burger - VERSION HARMONISÉE */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 40px;
+    height: 32px;
+    cursor: pointer;
+    z-index: 1001;
+    position: relative;
+    padding: 6px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    background: rgba(109, 180, 196, 0.1);
+    border: 2px solid transparent;
+}
+
+.burger-menu:hover {
+    background: rgba(109, 180, 196, 0.2);
+    border-color: rgba(109, 180, 196, 0.3);
+    transform: scale(1.05);
+}
+
+.burger-line {
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(45deg, #6db4c4, #5aa3b3);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+/* Animation du burger menu quand le menu est ouvert */
+#menu-toggle:checked + .burger-menu {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.2);
+}
+
+#menu-toggle:checked + .burger-menu .burger-line {
+    background: linear-gradient(45deg, #EF4444, #DC2626);
+}
+
+#menu-toggle:checked + .burger-menu .burger-line:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+#menu-toggle:checked + .burger-menu .burger-line:nth-child(2) {
+    opacity: 0;
+    transform: scale(0);
+}
+
+#menu-toggle:checked + .burger-menu .burger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+}
+
+/* Navigation container */
+.nav-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+/* Séparer les liens normaux des boutons d'action */
+.nav-menu li:nth-child(-n+4) a {
+    color: #374151;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    cursor: pointer;
+    border-radius: 8px;
+    position: relative;
+}
+
+.nav-menu li:nth-child(-n+4) a:hover {
+    color: #5DBEA3;
+    background: rgba(93, 190, 163, 0.08);
+    transform: translateY(-1px);
+}
+
+/* Styles spéciaux pour les boutons d'action (2 derniers) */
+.nav-menu li:nth-last-child(2) a,
+.nav-menu li:nth-last-child(1) a {
+    background: linear-gradient(135deg, #EF4444, #DC2626);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    white-space: nowrap;
+    margin-left: 1.5rem;
+    cursor: pointer;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+}
+
+.nav-menu li:nth-last-child(2) a:hover,
+.nav-menu li:nth-last-child(1) a:hover {
+    background: linear-gradient(135deg, #DC2626, #B91C1C);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+/* Overlay pour fermer le menu */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    backdrop-filter: blur(2px);
+}
+
+/* Afficher l'overlay quand le menu est ouvert */
+#menu-toggle:checked ~ .menu-overlay {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+/* Styles pour le contenu principal - ANTI-CHEVAUCHEMENT */
+#section-container {
+    margin-top: 120px;
+    min-height: calc(100vh - 120px);
+}
+
+/* Styles globaux pour éviter le chevauchement sur toutes les pages */
+main,
+.main-content,
+.content,
+.page-content {
+    margin-top: 120px;
+    min-height: calc(100vh - 120px);
+}
+
+/* Si vous avez d'autres conteneurs principaux */
+body > div:not(header):not(footer),
+body > section:not(header):not(footer),
+body > main:not(header):not(footer) {
+    padding-top: 120px;
+}
+
+/* Exception pour les éléments qui ne doivent pas être affectés */
+.no-header-margin {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* CORRECTION POUR LES ANCRES - SCROLL OFFSET */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 140px; /* 120px header + 20px marge */
+}
+
+/* Correction spécifique pour les sections avec des ancres */
+section[id] {
+    scroll-margin-top: 140px; /* Alternative pour navigateurs plus anciens */
+}
+
+/* Ancres spécifiques de votre site */
+#recettes,
+#categories,
+#favoris,
+#ajouts-recettes,
+#accueil {
+    scroll-margin-top: 140px;
+}
+
+/* Styles responsifs - VERSION HARMONISÉE */
+@media screen and (max-width: 768px) {
+    /* Afficher le burger menu */
+    .burger-menu {
+        display: flex;
+    }
+
+    /* Cacher et repositionner le menu pour mobile - VERSION AMÉLIORÉE */
+    .nav-container {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        left: auto;
+        transform: none;
+        width: 85%;
+        max-width: 380px;
+        height: 100vh;
+        background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+        transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        z-index: 1000;
+        padding: 0;
+        justify-content: flex-start;
+        box-shadow: -8px 0 25px rgba(0, 0, 0, 0.15);
+        border-left: 1px solid rgba(109, 180, 196, 0.2);
+    }
+
+    /* Afficher le menu mobile quand checkbox est cochée */
+    #menu-toggle:checked ~ .nav-container {
+        right: 0;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        padding: 6rem 2rem 2rem;
+        gap: 0;
+        height: 100%;
+        overflow-y: auto;
+        align-items: stretch;
+        background: transparent;
+    }
+
+    .nav-menu li {
+        margin-bottom: 0.5rem;
+    }
+
+    /* Reset des styles pour mobile - VERSION HARMONISÉE */
+    .nav-menu li:nth-child(-n+4) a {
+        display: block;
+        padding: 1.2rem 1.5rem;
+        font-size: 1.05rem;
+        border-radius: 12px;
+        color: #374151;
+        background: transparent;
+        transition: all 0.3s ease;
+        margin: 0;
+        cursor: pointer;
+        font-weight: 600;
+        border: 2px solid transparent;
+    }
+
+    .nav-menu li:nth-child(-n+4) a:hover {
+        background: linear-gradient(135deg, rgba(109, 180, 196, 0.1), rgba(90, 163, 179, 0.1));
+        color: #6db4c4;
+        border-color: rgba(109, 180, 196, 0.2);
+        transform: translateX(8px);
+    }
+
+    /* Styles spéciaux pour les boutons en mobile - VERSION HARMONISÉE */
+    .nav-menu li:nth-last-child(2) a,
+    .nav-menu li:nth-last-child(1) a {
+        background: linear-gradient(135deg, #6db4c4, #5aa3b3);
+        color: white;
+        font-weight: 600;
+        margin: 1.5rem 0 0 0;
+        padding: 1.2rem 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(109, 180, 196, 0.3);
+        border: 2px solid transparent;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-menu li:nth-last-child(2) a:hover,
+    .nav-menu li:nth-last-child(1) a:hover {
+        background: linear-gradient(135deg, #5aa3b3, #4a929f);
+        transform: translateX(8px) translateY(-2px);
+        box-shadow: 0 6px 20px rgba(109, 180, 196, 0.4);
+    }
+
+    /* Ajustements pour mobile */
+    #section {
+        padding: 1rem 1.5rem;
+    }
+
+    #logo {
+        height: 70px;
+    }
+
+    /* Empêcher le scroll du body quand le menu est ouvert */
+    #menu-toggle:checked ~ #section-container {
+        overflow: hidden;
+        height: 100vh;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #section {
+        padding: 0.75rem 1rem;
+        height: 80px;
+    }
+
+    #logo {
+        height: 60px;
+    }
+
+    .burger-menu {
+        width: 36px;
+        height: 28px;
+        padding: 5px;
+    }
+
+    .burger-line {
+        height: 3.5px;
+    }
+
+    .nav-container {
+        width: 90%;
+        max-width: 320px;
+    }
+
+    .nav-menu {
+        padding: 5rem 1.5rem 2rem;
+    }
+
+    .nav-menu li:nth-child(-n+4) a {
+        padding: 1rem 1.2rem;
+        font-size: 1rem;
+    }
+
+    .nav-menu li:nth-last-child(2) a,
+    .nav-menu li:nth-last-child(1) a {
+        padding: 1rem 1.2rem;
+    }
+
+    /* Ajustement du contenu principal pour petits mobiles */
+    #section-container,
+    main,
+    .main-content,
+    .content,
+    .page-content {
+        margin-top: 80px;
+        min-height: calc(100vh - 80px);
+    }
+
+    body > div:not(header):not(footer),
+    body > section:not(header):not(footer),
+    body > main:not(header):not(footer) {
+        padding-top: 80px;
+    }
+
+    /* Ajustement scroll pour les ancres en mode mobile */
+    html {
+        scroll-padding-top: 100px; /* 80px header + 20px marge */
+    }
+
+    section[id],
+    #recettes,
+    #categories,
+    #favoris,
+    #ajouts-recettes,
+    #accueil {
+        scroll-margin-top: 100px;
+    }
+}
+
+/* Focus states pour l'accessibilité - VERSION HARMONISÉE */
+.burger-menu:focus,
+.nav-menu a:focus {
+    outline: 3px solid rgba(109, 180, 196, 0.5);
+    outline-offset: 2px;
+}
+
+/* Amélioration pour fermer le menu en cliquant sur l'overlay */
+.menu-overlay {
+    cursor: pointer;
+}
+
+/* Réduction de mouvement pour l'accessibilité */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Animation d'entrée pour les éléments du menu mobile */
+@media screen and (max-width: 768px) {
+    @keyframes slideInFromRight {
+        from {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    #menu-toggle:checked ~ .nav-container .nav-menu li {
+        animation: slideInFromRight 0.3s ease-out forwards;
+    }
+
+    #menu-toggle:checked ~ .nav-container .nav-menu li:nth-child(1) { animation-delay: 0.1s; }
+    #menu-toggle:checked ~ .nav-container .nav-menu li:nth-child(2) { animation-delay: 0.15s; }
+    #menu-toggle:checked ~ .nav-container .nav-menu li:nth-child(3) { animation-delay: 0.2s; }
+    #menu-toggle:checked ~ .nav-container .nav-menu li:nth-child(4) { animation-delay: 0.25s; }
+    #menu-toggle:checked ~ .nav-container .nav-menu li:nth-child(5) { animation-delay: 0.3s; }
+    #menu-toggle:checked ~ .nav-container .nav-menu li:nth-child(6) { animation-delay: 0.35s; }
+}

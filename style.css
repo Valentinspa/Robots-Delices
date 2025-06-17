@@ -1,9 +1,9 @@
-/* Section d'accueil - Robots-Délices */
+/* === SECTION D'ACCUEIL === */
 #accueil {
     background: linear-gradient(135deg, #6db4c4 0%, #5aa3b3 100%);
-    padding: 40px 20px;
+    padding: 60px 20px 60px;
     text-align: center;
-    min-height: calc(100vh - 120px);
+    height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -11,17 +11,15 @@
     position: relative;
     overflow: hidden;
     margin-top: -120px;
-    padding-top: 120px;
+    padding-top: 160px;
 }
-
-
 
 /* Titre principal */
 #accueil h1 {
     color: white;
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 700;
-    margin: 0 0 20px 0;
+    margin: 0 0 15px 0;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     letter-spacing: -0.5px;
     line-height: 1.2;
@@ -30,7 +28,7 @@
 /* Sous-titre */
 #accueil p {
     color: rgba(255, 255, 255, 0.9);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 300;
     margin: 0 0 40px 0;
     max-width: 600px;
@@ -101,111 +99,292 @@
     transform: translateY(0);
 }
 
-/* Responsive Design */
-
-/* Tablettes */
-@media (max-width: 768px) {
-    #accueil {
-        padding: 30px 20px;
-        min-height: calc(100vh - 90px);
-        margin-top: -90px;
-        padding-top: 90px;
-    }
-    
-    #accueil h1 {
-        font-size: 2.5rem;
-        margin-bottom: 16px;
-    }
-    
-    #accueil p {
-        font-size: 1.1rem;
-        margin-bottom: 35px;
-    }
-    
-    #search-bar {
-        max-width: 450px;
-        padding: 6px;
-    }
-    
-    #search-bar input[type="text"] {
-        padding: 14px 20px;
-        font-size: 0.95rem;
-    }
-    
-    #search-bar button {
-        padding: 14px 28px;
-        font-size: 0.95rem;
-    }
+/* === SECTION CATÉGORIES === */
+#categories {
+    background: #f8fafc;
+    padding: 80px 20px;
 }
 
-/* Smartphones */
-@media (max-width: 480px) {
-    #accueil {
-        padding: 20px 15px;
-        min-height: calc(100vh - 80px);
-        margin-top: -80px;
-        padding-top: 80px;
-    }
-    
-    #accueil h1 {
-        font-size: 2rem;
-        margin-bottom: 12px;
-        line-height: 1.3;
-    }
-    
-    #accueil p {
-        font-size: 1rem;
-        margin-bottom: 30px;
-        padding: 0 10px;
-    }
-    
-    #search-bar {
-        flex-direction: column;
-        max-width: 300px;
-        padding: 8px;
-        border-radius: 20px;
-        gap: 8px;
-    }
-    
-    #search-bar input[type="text"] {
-        padding: 12px 20px;
-        font-size: 0.9rem;
-        border-radius: 15px;
-        text-align: center;
-    }
-    
-    #search-bar button {
-        padding: 12px 24px;
-        font-size: 0.9rem;
-        border-radius: 15px;
-        width: 100%;
-    }
+#categories-title {
+    text-align: center;
+    margin-bottom: 60px;
 }
 
-/* Très petits écrans */
-@media (max-width: 320px) {
-    #accueil {
-        padding: 40px 10px;
-    }
-    
-    #accueil h1 {
-        font-size: 1.8rem;
-    }
-    
-    #accueil p {
-        font-size: 0.9rem;
-    }
-    
-    #search-bar {
-        max-width: 280px;
-    }
+#categories-title h2 {
+    color: #6db4c4;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 15px 0;
+    letter-spacing: -0.5px;
 }
 
-/* Animation d'entrée (optionnelle) */
+#categories-title p {
+    color: #64748b;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin: 0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Grille des catégories */
+#categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Cartes de catégories */
+.categories-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid rgba(109, 180, 196, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.categories-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(109, 180, 196, 0.15);
+    border-color: rgba(109, 180, 196, 0.3);
+}
+
+.categories-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, #6db4c4, #5aa3b3);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.categories-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Icônes des catégories */
+.categories-icons {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(109, 180, 196, 0.1), rgba(90, 163, 179, 0.1));
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 25px;
+    transition: all 0.3s ease;
+}
+
+.categories-card:hover .categories-icons {
+    background: linear-gradient(135deg, rgba(109, 180, 196, 0.2), rgba(90, 163, 179, 0.2));
+    transform: scale(1.1);
+}
+
+/* Titres des catégories */
+.categories-card h3 {
+    color: #1e293b;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    line-height: 1.3;
+}
+
+/* Descriptions des catégories */
+.categories-card p {
+    color: #64748b;
+    font-size: 0.95rem;
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* === SECTION RECETTES === */
+#recettes {
+    background: white;
+    padding: 80px 20px;
+}
+
+#recettes-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+#recettes-title h2 {
+    color: #6db4c4;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 15px 0;
+    letter-spacing: -0.5px;
+}
+
+#recettes-title p {
+    color: #64748b;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin: 0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Grille des recettes */
+#recettes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Cartes de recettes */
+.recette-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    overflow: hidden;
+    position: relative;
+}
+
+.recette-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(109, 180, 196, 0.15);
+    border-color: rgba(109, 180, 196, 0.3);
+}
+
+/* Images des recettes */
+.recette-image {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+    border-radius: 20px 20px 0 0;
+}
+
+.recette-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.recette-card:hover .recette-image img {
+    transform: scale(1.05);
+}
+
+/* Contenu des recettes */
+.recettes-content {
+    padding: 25px;
+}
+
+.recette-summarize {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* Bouton favoris */
+.bouton-favoris {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+}
+
+.bouton-favoris:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 1);
+}
+
+/* Titres des recettes */
+.recette-summarize h3 {
+    color: #1e293b;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    line-height: 1.3;
+    padding-right: 50px;
+}
+
+/* Descriptions des recettes */
+.recette-summarize p {
+    color: #64748b;
+    font-size: 0.95rem;
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.5;
+    padding-right: 50px;
+}
+
+/* Métadonnées des recettes */
+.recette-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(226, 232, 240, 0.8);
+    padding-top: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.recette-meta span {
+    color: #64748b;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(109, 180, 196, 0.1);
+    padding: 6px 12px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.recette-meta span:hover {
+    background: rgba(109, 180, 196, 0.2);
+    transform: translateY(-1px);
+}
+
+/* === ANIMATIONS === */
 @keyframes fadeInUp {
     from {
         opacity: 0;
         transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
     }
     to {
         opacity: 1;
@@ -221,3 +400,311 @@
     animation: fadeInUp 0.8s ease-out 0.2s both;
 }
 
+.recette-card {
+    animation: slideInUp 0.6s ease-out;
+}
+
+.recette-card:nth-child(1) { animation-delay: 0.1s; }
+.recette-card:nth-child(2) { animation-delay: 0.2s; }
+.recette-card:nth-child(3) { animation-delay: 0.3s; }
+
+/* === RESPONSIVE DESIGN === */
+
+/* Tablettes (768px et moins) */
+@media (max-width: 768px) {
+    /* Section Accueil */
+    #accueil {
+        height: 360px;
+        padding: 50px 20px 50px;
+        margin-top: -90px;
+        padding-top: 130px;
+    }
+    
+    #accueil h1 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    
+    #accueil p {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+    
+    #search-bar {
+        max-width: 400px;
+        padding: 6px;
+    }
+    
+    #search-bar input[type="text"] {
+        padding: 12px 18px;
+        font-size: 0.9rem;
+    }
+    
+    #search-bar button {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+    }
+    
+    /* Section Catégories */
+    #categories {
+        padding: 60px 20px;
+    }
+    
+    #categories-title {
+        margin-bottom: 40px;
+    }
+    
+    #categories-title h2 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    
+    #categories-title p {
+        font-size: 1rem;
+    }
+    
+    #categories-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 0 10px;
+    }
+    
+    .categories-card {
+        padding: 30px 20px;
+        border-radius: 16px;
+    }
+    
+    .categories-icons {
+        font-size: 3rem;
+        width: 70px;
+        height: 70px;
+        margin-bottom: 20px;
+    }
+    
+    .categories-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .categories-card p {
+        font-size: 0.9rem;
+    }
+    
+    /* Section Recettes */
+    #recettes {
+        padding: 60px 20px;
+    }
+    
+    #recettes-title {
+        margin-bottom: 40px;
+    }
+    
+    #recettes-title h2 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    
+    #recettes-title p {
+        font-size: 1rem;
+    }
+    
+    #recettes-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 0 10px;
+    }
+    
+    .recette-image {
+        height: 200px;
+    }
+    
+    .recettes-content {
+        padding: 20px;
+    }
+    
+    .recette-summarize h3 {
+        font-size: 1.3rem;
+    }
+    
+    .recette-meta {
+        padding-top: 15px;
+    }
+    
+    .recette-meta span {
+        font-size: 0.85rem;
+        padding: 5px 10px;
+    }
+}
+
+/* Smartphones (480px et moins) */
+@media (max-width: 480px) {
+    /* Section Accueil */
+    #accueil {
+        height: 320px;
+        padding: 40px 15px 40px;
+        margin-top: -70px;
+        padding-top: 110px;
+    }
+    
+    #accueil h1 {
+        font-size: 1.7rem;
+        margin-bottom: 8px;
+        line-height: 1.3;
+    }
+    
+    #accueil p {
+        font-size: 0.9rem;
+        margin-bottom: 25px;
+        padding: 0 10px;
+    }
+    
+    #search-bar {
+        flex-direction: column;
+        max-width: 280px;
+        padding: 6px;
+        border-radius: 15px;
+        gap: 6px;
+    }
+    
+    #search-bar input[type="text"] {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+        border-radius: 12px;
+        text-align: center;
+    }
+    
+    #search-bar button {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+        border-radius: 12px;
+        width: 100%;
+    }
+    
+    /* Section Catégories */
+    #categories {
+        padding: 40px 15px;
+    }
+    
+    #categories-title h2 {
+        font-size: 1.8rem;
+    }
+    
+    #categories-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        padding: 0;
+    }
+    
+    .categories-card {
+        padding: 25px 15px;
+        border-radius: 12px;
+    }
+    
+    .categories-icons {
+        font-size: 2.5rem;
+        width: 60px;
+        height: 60px;
+        margin-bottom: 15px;
+    }
+    
+    .categories-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+    }
+    
+    .categories-card p {
+        font-size: 0.85rem;
+    }
+    
+    /* Section Recettes */
+    #recettes {
+        padding: 40px 15px;
+    }
+    
+    #recettes-title h2 {
+        font-size: 1.8rem;
+    }
+    
+    #recettes-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 0;
+    }
+    
+    .recette-image {
+        height: 180px;
+    }
+    
+    .recettes-content {
+        padding: 15px;
+    }
+    
+    .recette-summarize h3 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+    }
+    
+    .recette-summarize p {
+        font-size: 0.9rem;
+    }
+    
+    .bouton-favoris {
+        width: 35px;
+        height: 35px;
+        font-size: 1.3rem;
+    }
+    
+    .recette-meta {
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    .recette-meta span {
+        font-size: 0.8rem;
+        padding: 4px 8px;
+    }
+}
+
+/* Très petits écrans (320px et moins) */
+@media (max-width: 320px) {
+    #accueil {
+        height: 300px;
+        padding: 35px 10px 35px;
+        padding-top: 100px;
+    }
+    
+    #accueil h1 {
+        font-size: 1.5rem;
+    }
+    
+    #accueil p {
+        font-size: 0.85rem;
+        margin-bottom: 20px;
+    }
+    
+    #search-bar {
+        max-width: 260px;
+    }
+    
+    #search-bar input[type="text"] {
+        padding: 8px 14px;
+        font-size: 0.8rem;
+    }
+    
+    #search-bar button {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Desktop (1024px et plus) */
+@media (min-width: 1024px) {
+    #categories-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1000px;
+    }
+    
+    #recettes-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1200px;
+    }
+}

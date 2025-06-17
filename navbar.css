@@ -62,7 +62,7 @@ header {
     display: none;
 }
 
-/* Label qui sert de bouton burger - VERSION HARMONISÉE */
+
 .burger-menu {
     display: none;
     flex-direction: column;
@@ -118,13 +118,24 @@ header {
     transform: rotate(-45deg) translate(8px, -8px);
 }
 
-/* Navigation container */
+
 .nav-container {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     align-items: center;
+}
+
+/* Version alternative pour éviter les problèmes de débordement */
+@media screen and (max-width: 1200px) and (min-width: 769px) {
+    .nav-container {
+        position: static;
+        transform: none;
+        margin-left: auto;
+        margin-right: 1rem;
+        max-width: none;
+    }
 }
 
 .nav-menu {
@@ -252,11 +263,55 @@ section[id] {
     scroll-margin-top: 140px;
 }
 
+/* Media query intermédiaire pour éviter les mouvements */
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+    .nav-container {
+        position: static;
+        transform: none;
+        margin-left: auto;
+        margin-right: 1rem;
+    }
+    
+    .nav-menu {
+        gap: 1.5rem;
+    }
+    
+    .nav-menu li:nth-child(-n+4) a {
+        font-size: 0.9rem;
+        padding: 0.6rem 0.8rem;
+    }
+    
+    .nav-menu li:nth-last-child(2) a,
+    .nav-menu li:nth-last-child(1) a {
+        margin-left: 1rem;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+    }
+}
+
 /* Styles responsifs - VERSION HARMONISÉE */
 @media screen and (max-width: 768px) {
     /* Afficher le burger menu */
     .burger-menu {
         display: flex;
+    }
+
+    /* CORRECTION POUR LE LOGO - Réduire la taille et ajuster l'espacement */
+    #section {
+        padding: 1rem 1.5rem;
+        height: 90px; /* Réduction de la hauteur du header */
+        gap: 1rem; /* Ajout d'un gap entre les éléments */
+    }
+
+    #logo {
+        height: 55px; /* Réduction significative du logo */
+        max-width: 150px; /* Limite la largeur max */
+    }
+
+    /* Ajustement du burger menu pour éviter le chevauchement */
+    .burger-menu {
+        flex-shrink: 0; /* Empêche le burger menu de rétrécir */
+        margin-left: auto; /* Pousse le burger menu à droite */
     }
 
     /* Cacher et repositionner le menu pour mobile - VERSION AMÉLIORÉE */
@@ -340,40 +395,66 @@ section[id] {
         box-shadow: 0 6px 20px rgba(109, 180, 196, 0.4);
     }
 
-    /* Ajustements pour mobile */
-    #section {
-        padding: 1rem 1.5rem;
-    }
-
-    #logo {
-        height: 70px;
-    }
-
     /* Empêcher le scroll du body quand le menu est ouvert */
     #menu-toggle:checked ~ #section-container {
         overflow: hidden;
         height: 100vh;
     }
+
+    /* Ajustement du contenu principal pour tablette */
+    #section-container,
+    main,
+    .main-content,
+    .content,
+    .page-content {
+        margin-top: 90px;
+        min-height: calc(100vh - 90px);
+    }
+
+    body > div:not(header):not(footer),
+    body > section:not(header):not(footer),
+    body > main:not(header):not(footer) {
+        padding-top: 90px;
+    }
+
+    /* Ajustement scroll pour les ancres en mode tablette */
+    html {
+        scroll-padding-top: 110px; /* 90px header + 20px marge */
+    }
+
+    section[id],
+    #recettes,
+    #categories,
+    #favoris,
+    #ajouts-recettes,
+    #accueil {
+        scroll-margin-top: 110px;
+    }
 }
 
 @media screen and (max-width: 480px) {
+    /* CORRECTION POUR TRÈS PETITS ÉCRANS */
     #section {
         padding: 0.75rem 1rem;
-        height: 80px;
+        height: 70px; /* Encore plus petit pour mobile */
+        justify-content: space-between;
+        align-items: center;
     }
 
     #logo {
-        height: 60px;
+        height: 45px; /* Logo encore plus petit */
+        max-width: 120px;
     }
 
+    /* Réduction du burger menu pour très petits écrans */
     .burger-menu {
-        width: 36px;
-        height: 28px;
-        padding: 5px;
+        width: 32px;
+        height: 24px;
+        padding: 4px;
     }
 
     .burger-line {
-        height: 3.5px;
+        height: 3px;
     }
 
     .nav-container {
@@ -382,7 +463,7 @@ section[id] {
     }
 
     .nav-menu {
-        padding: 5rem 1.5rem 2rem;
+        padding: 4rem 1.5rem 2rem; /* Réduction du padding top */
     }
 
     .nav-menu li:nth-child(-n+4) a {
@@ -401,19 +482,19 @@ section[id] {
     .main-content,
     .content,
     .page-content {
-        margin-top: 80px;
-        min-height: calc(100vh - 80px);
+        margin-top: 70px;
+        min-height: calc(100vh - 70px);
     }
 
     body > div:not(header):not(footer),
     body > section:not(header):not(footer),
     body > main:not(header):not(footer) {
-        padding-top: 80px;
+        padding-top: 70px;
     }
 
     /* Ajustement scroll pour les ancres en mode mobile */
     html {
-        scroll-padding-top: 100px; /* 80px header + 20px marge */
+        scroll-padding-top: 90px; /* 70px header + 20px marge */
     }
 
     section[id],
@@ -422,7 +503,7 @@ section[id] {
     #favoris,
     #ajouts-recettes,
     #accueil {
-        scroll-margin-top: 100px;
+        scroll-margin-top: 90px;
     }
 }
 

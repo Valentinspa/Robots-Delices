@@ -62,17 +62,17 @@ header {
     display: none;
 }
 
-
+/* Burger menu avec corrections - VERSION CORRIGÉE */
 .burger-menu {
     display: none;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between; /* Espacement égal entre les barres */
     width: 40px;
     height: 32px;
     cursor: pointer;
     z-index: 1001;
     position: relative;
-    padding: 6px;
+    padding: 6px 4px; /* Padding ajusté pour centrer */
     border-radius: 10px;
     transition: all 0.3s ease;
     background: rgba(109, 180, 196, 0.1);
@@ -87,12 +87,14 @@ header {
 
 .burger-line {
     width: 100%;
-    height: 4px;
+    height: 3px;
     background: linear-gradient(45deg, #6db4c4, #5aa3b3);
-    border-radius: 4px;
+    border-radius: 2px;
     transition: all 0.3s ease;
     transform-origin: center;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0; /* Empêche la réduction des barres */
+    min-height: 3px; /* Hauteur minimale garantie */
 }
 
 /* Animation du burger menu quand le menu est ouvert */
@@ -105,8 +107,9 @@ header {
     background: linear-gradient(45deg, #EF4444, #DC2626);
 }
 
+/* Transformation en croix - CORRECTION */
 #menu-toggle:checked + .burger-menu .burger-line:nth-child(1) {
-    transform: rotate(45deg) translate(8px, 8px);
+    transform: rotate(45deg) translate(7px, 7px);
 }
 
 #menu-toggle:checked + .burger-menu .burger-line:nth-child(2) {
@@ -115,9 +118,8 @@ header {
 }
 
 #menu-toggle:checked + .burger-menu .burger-line:nth-child(3) {
-    transform: rotate(-45deg) translate(8px, -8px);
+    transform: rotate(-45deg) translate(7px, -7px);
 }
-
 
 .nav-container {
     position: absolute;
@@ -206,6 +208,7 @@ header {
     transition: all 0.3s ease;
     pointer-events: none;
     backdrop-filter: blur(2px);
+    cursor: pointer;
 }
 
 /* Afficher l'overlay quand le menu est ouvert */
@@ -287,6 +290,28 @@ section[id] {
         padding: 0.6rem 1.2rem;
         font-size: 0.85rem;
     }
+
+    /* Corrections burger menu pour écrans moyens */
+    .burger-menu {
+        width: 38px;
+        height: 30px;
+        padding: 5px 3px;
+        justify-content: space-between;
+    }
+    
+    .burger-line {
+        height: 3px;
+        flex-shrink: 0;
+        min-height: 3px;
+    }
+    
+    #menu-toggle:checked + .burger-menu .burger-line:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+    
+    #menu-toggle:checked + .burger-menu .burger-line:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
 }
 
 /* Styles responsifs - VERSION HARMONISÉE */
@@ -294,6 +319,24 @@ section[id] {
     /* Afficher le burger menu */
     .burger-menu {
         display: flex;
+        width: 36px;
+        height: 28px;
+        padding: 5px 3px;
+        justify-content: space-between;
+    }
+
+    .burger-line {
+        height: 3px;
+        flex-shrink: 0;
+        min-height: 3px;
+    }
+
+    #menu-toggle:checked + .burger-menu .burger-line:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    #menu-toggle:checked + .burger-menu .burger-line:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
     }
 
     /* CORRECTION POUR LE LOGO - Réduire la taille et ajuster l'espacement */
@@ -449,12 +492,23 @@ section[id] {
     /* Réduction du burger menu pour très petits écrans */
     .burger-menu {
         width: 32px;
-        height: 24px;
-        padding: 4px;
+        height: 26px;
+        padding: 4px 2px;
+        justify-content: space-between;
     }
 
     .burger-line {
         height: 3px;
+        flex-shrink: 0;
+        min-height: 3px;
+    }
+
+    #menu-toggle:checked + .burger-menu .burger-line:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    #menu-toggle:checked + .burger-menu .burger-line:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
     }
 
     .nav-container {
@@ -512,11 +566,6 @@ section[id] {
 .nav-menu a:focus {
     outline: 3px solid rgba(109, 180, 196, 0.5);
     outline-offset: 2px;
-}
-
-/* Amélioration pour fermer le menu en cliquant sur l'overlay */
-.menu-overlay {
-    cursor: pointer;
 }
 
 /* Réduction de mouvement pour l'accessibilité */

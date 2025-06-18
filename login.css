@@ -1,0 +1,230 @@
+/* Styles pour la page de connexion */
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f5d7d0 0%, #f8e6e1 100%);
+    min-height: 100vh;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 120px); /* Ajustement pour header/footer */
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+#section-container {
+    display: flex;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 900px;
+    width: 100%;
+    min-height: 500px;
+}
+
+/* Section gauche avec le logo et le texte */
+#login-container {
+    background: linear-gradient(135deg, #6db4c4 0%, #5aa3b3 100%);
+    color: white;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    min-width: 350px;
+}
+
+#login-container #logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 30px;
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+#login-container p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+    opacity: 0.95;
+}
+
+/* Section droite avec le formulaire */
+.right-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 350px;
+}
+
+/* Container pour les onglets */
+.tabs-container {
+    display: flex;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 40px 40px 0 40px;
+}
+
+.tabs-container a {
+    text-decoration: none;
+    padding: 15px 0;
+    margin-right: 40px;
+    color: #999;
+    font-weight: 500;
+    font-size: 16px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.tabs-container a.active {
+    color: #333;
+    border-bottom-color: #ff6b6b;
+}
+
+.tabs-container a:hover {
+    color: #333;
+}
+
+#form-container {
+    padding: 40px 40px 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+/* Formulaire */
+#login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+#login-form > div {
+    display: flex;
+    flex-direction: column;
+}
+
+#login-form label {
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 14px;
+}
+
+#login-form input {
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    background-color: #f8f9fa;
+}
+
+#login-form input:focus {
+    outline: none;
+    border-color: #6db4c4;
+    background-color: white;
+}
+
+#login-form button {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 10px;
+}
+
+#login-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+}
+
+#login-form button:active {
+    transform: translateY(0);
+}
+
+/* Lien mot de passe oublié */
+#form-container > a {
+    text-align: center;
+    margin-top: 20px;
+    color: #6db4c4;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+#form-container > a:hover {
+    color: #ff6b6b;
+    text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    #section-container {
+        flex-direction: column;
+        margin: 20px;
+        max-width: none;
+    }
+    
+    #login-container {
+        min-width: auto;
+        padding: 40px 30px;
+    }
+    
+    .right-section {
+        min-width: auto;
+    }
+    
+    .tabs-container {
+        padding: 30px 30px 0 30px;
+    }
+    
+    #form-container {
+        padding: 40px 30px;
+    }
+    
+    #login-container #logo {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 20px;
+    }
+    
+    #login-container p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        padding: 10px;
+    }
+    
+    #section-container {
+        margin: 10px;
+    }
+    
+    #login-container {
+        padding: 30px 20px;
+    }
+    
+    .tabs-container {
+        padding: 20px 20px 0 20px;
+    }
+    
+    #form-container {
+        padding: 30px 20px;
+    }
+}

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./navbar.css">
+    <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="footer.css">
     <title>Connexion</title>
 </head>
@@ -43,20 +44,32 @@
         </div>
     </header>
     <main>
-        <h1>Connectez vous à Robots-Délices</h1>
-        <form id="login-form" action="/login" method="POST">
-            <div>
-                <label for="email">Email :</label>
-                <input type="email" id="email" name="email" required>
+        <div id="section-container">
+            <div id="login-container">
+                <img alt="Logo Robots-Délices" id="logo" src="./img/logo_robots_delices.png"/>
+                <p>Rejoignez notre communauté de passionnés de cuisine et partagez vos meilleures recettes</p>
             </div>
-            <div>
-                <label for="password">Mot de passe :</label>
-                <input type="password" id="password" name="password" required>
+            <div class="right-section">
+                <div class="tabs-container">
+                    <a href="./login.html" class="active">Connexion</a>
+                    <a href="./register.html">Inscription</a>
+                </div>
+                <div id="form-container">
+                    <form id="login-form" action="/login" method="POST">
+                        <div>
+                            <label for="email">Email :</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div>
+                            <label for="password">Mot de passe :</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        <button type="submit">Se connecter</button>
+                    </form>
+                    <a href="./mdp-oublié.html">Mot de passe oublié ?</a>
+                </div>
             </div>
-            <button type="submit">Se connecter</button>
-        </form>
-        <p>Mot de passe oublié ? <a href="./mdp-oublié.html">Réinitialiser</a></p>
-        <p>Pas encore inscrit ? <a href="./register.html">Créer un compte</a></p>
+        </div>
     </main>
     <footer>
         <p>© 2025 Robots-Délices. Tous droits réservés.</p>

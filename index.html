@@ -12,148 +12,140 @@
     <header>
         <div id="section">
             <div id="header-title">
-                <div>
-                    <a href="./index.html">
-                        <img alt="Logo Robots-Délices" id="logo" src="./img/logo_robots_delices.png" />
-                    </a>
-                </div>
+                <a href="./index.html">
+                    <img id="logo" alt="Logo Robots-Délices" src="./img/logo_robots_delices.png">
+                </a>
             </div>
-            
-            
-            <input type="checkbox" id="menu-toggle">
-            
-            
-            <label for="menu-toggle" class="burger-menu" aria-label="Menu">
+            <input id="menu-toggle" type="checkbox" />
+            <label class="burger-menu" for="menu-toggle">
                 <span class="burger-line"></span>
                 <span class="burger-line"></span>
                 <span class="burger-line"></span>
             </label>
-            
             <div id="nav-container" class="nav-container">
                 <ul class="nav-menu">
                     <li class="li"><a href="./index.html">Accueil</a></li>
-                    <li class="li"><a href="#recettes">Recettes</a></li>
-                    <li class="li"><a href="#categories">Catégories</a></li>
-                    <li class="li"><a href="#favoris">Mes favoris</a></li>
-                    <li class="li"><a href="#ajouts-recettes">+ Ajouter une recette</a></li>
-                    <li class="li"><a href="./login.html">Connexion</a></li>
+                    <li class="li"><a href="./index.html#recettes">Recettes</a></li>
+                    <li class="li"><a href="./index.html#categories">Catégories</a></li>
+                    <li class="li"><a href="./favoris.html">Mes favoris</a></li>
+                    <li class="li"><a href="./ajouter.html" class="ajouter-btn">+ Ajouter une recette</a></li>
+                    <li class="li"><a href="./login.html" class="connexion-btn">Connexion</a></li>
                 </ul>
             </div>
-            
-            
-            <label for="menu-toggle" class="menu-overlay"></label>
+            <div class="menu-overlay"></div>
         </div>
     </header>
-    
-    <div id="section-container">
-        <section id="accueil">
-            <div>
-                <h1>Bienvenue sur Robots-Délices</h1>
-                <p>Découvrez et partagez des recettes délicieuses avec notre communauté passionnée</p>
-            </div>
-            <div id="search-bar">
-                <input type="text" name="search" placeholder="Rechercher une recette, un ingrédient..."/>
-                <button type="submit">Rechercher</button>
-            </div>
-        </section>
-        <section id="categories">
-            <div id="categories-title">
-                <h2>Explorer par Catégorie</h2>
-                <p>Trouvez l'inspiration pour votre prochain repas</p>
-            </div>
-            <div id="categories-grid">
-                <div class="categories-card">
-                    <div class="categories-icons">🥗</div>
-                    <h3>Entrées</h3>
-                    <p>Salades et apéritifs</p>
+    <main>
+        <div id="section-container">
+            <section id="accueil">
+                <div>
+                    <h1>Bienvenue sur Robots-Délices</h1>
+                    <p>Découvrez et partagez des recettes délicieuses avec notre communauté passionnée</p>
                 </div>
-                <div class="categories-card">
-                    <div class="categories-icons">🍖</div>
-                    <h3>Plats</h3>
-                    <p>Viandes et poissons</p>
+                <div id="search-bar">
+                    <input type="text" name="search" placeholder="Rechercher une recette, un ingrédient..."/>
+                    <button type="submit">Rechercher</button>
                 </div>
-                <div class="categories-card">
-                    <div class="categories-icons">🍰</div>
-                    <h3>Desserts</h3>
-                    <p>Douceurs sucrées</p>
+            </section>
+            <section id="categories">
+                <div id="categories-title">
+                    <h2>Explorer par Catégorie</h2>
+                    <p>Trouvez l'inspiration pour votre prochain repas</p>
                 </div>
-                <div class="categories-card">
-                    <div class="categories-icons">🥤</div>
-                    <h3>Boissons</h3>
-                    <p>Cocktails et smoothies</p>
-                </div>
-                <div class="categories-card">
-                    <div class="categories-icons">🌱</div>
-                    <h3>Végétarien</h3>
-                    <p>Sans viande</p>
-                </div>
-                <div class="categories-card">
-                    <div class="categories-icons">⚡</div>
-                    <h3>Rapide</h3>
-                    <p> Moins de 30 minutes</p>
-                </div>  
-            </div>
-        </section>
-        <section id="recettes">
-            <div id="recettes-title">
-                <h2>Recettes Populaires</h2>
-                <p>Les favoris de notre communauté</p>
-            </div>
-            <div id="recettes-grid">
-                <div class="recette-card">
-                    <div class="recette-image">
-                        <a href=""><img src="./img/salade_cesar.jpg" alt="Image Salade César" /></a>
+                <div id="categories-grid">
+                    <div class="categories-card">
+                        <div class="categories-icons">🥗</div>
+                        <h3>Entrées</h3>
+                        <p>Salades et apéritifs</p>
                     </div>
-                    <div class="recettes-content">
-                        <div class="recette-summarize">
-                            <h3>Salade César</h3>
-                            <p>Une salade classique avec poulet grillé et croûtons</p>
-                            <span class="bouton-favoris">🤍</span>
-                        </div>
-                        <div class="recette-meta">
-                            <span>⏱️ 30 min</span>
-                            <span>👥 4 pers</span>
-                            <span>⭐ 4.8</span>
-                        </div>
+                    <div class="categories-card">
+                        <div class="categories-icons">🍖</div>
+                        <h3>Plats</h3>
+                        <p>Viandes et poissons</p>
                     </div>
+                    <div class="categories-card">
+                        <div class="categories-icons">🍰</div>
+                        <h3>Desserts</h3>
+                        <p>Douceurs sucrées</p>
+                    </div>
+                    <div class="categories-card">
+                        <div class="categories-icons">🥤</div>
+                        <h3>Boissons</h3>
+                        <p>Cocktails et smoothies</p>
+                    </div>
+                    <div class="categories-card">
+                        <div class="categories-icons">🌱</div>
+                        <h3>Végétarien</h3>
+                        <p>Sans viande</p>
+                    </div>
+                    <div class="categories-card">
+                        <div class="categories-icons">⚡</div>
+                        <h3>Rapide</h3>
+                        <p> Moins de 30 minutes</p>
+                    </div>  
                 </div>
-                <div class="recette-card">
-                    <div class="recette-image">
-                        <a href=""><img src="./img/spaghetti_carbonara.jpg" alt="Image Spaghetti Carbonara" /></a>
-                    </div>
-                    <div class="recettes-content">
-                        <div class="recette-summarize">
-                            <h3>Spaghetti Carbonara</h3>
-                            <p>Un plat italien crémeux et savoureux</p>
-                            <span class="bouton-favoris">❤️</span>
+            </section>
+            <section id="recettes">
+                <div id="recettes-title">
+                    <h2>Recettes Populaires</h2>
+                    <p>Les favoris de notre communauté</p>
+                </div>
+                <div id="recettes-grid">
+                    <div class="recette-card">
+                        <div class="recette-image">
+                            <a href=""><img src="./img/salade_cesar.jpg" alt="Image Salade César" /></a>
                         </div>
-                        <div class="recette-meta">
-                            <span>⏱️ 30 min</span>
-                            <span>👥 6 pers</span>
-                            <span>⭐ 4.9</span>
+                        <div class="recettes-content">
+                            <div class="recette-summarize">
+                                <h3>Salade César</h3>
+                                <p>Une salade classique avec poulet grillé et croûtons</p>
+                                <span class="bouton-favoris">🤍</span>
+                            </div>
+                            <div class="recette-meta">
+                                <span>⏱️ 30 min</span>
+                                <span>👥 4 pers</span>
+                                <span>⭐ 4.8</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="recette-card">
-                    <div class="recette-image">
-                        <a href=""><img src="./img/tarte_aux_pommes.jpg" alt="Image Tarte aux pommes" /></a>
-                    </div>
-                    <div class="recettes-content">
-                        <div class="recette-summarize">
-                            <h3>Tarte aux Pommes</h3>
-                            <p>Un dessert traditionnel français</p>
-                            <span class="bouton-favoris">🤍</span>
+                    <div class="recette-card">
+                        <div class="recette-image">
+                            <a href=""><img src="./img/spaghetti_carbonara.jpg" alt="Image Spaghetti Carbonara" /></a>
                         </div>
-                        <div class="recette-meta">
-                            <span>⏱️ 45 min</span>
-                            <span>👥 8 pers</span>
-                            <span>⭐ 4.7</span>
+                        <div class="recettes-content">
+                            <div class="recette-summarize">
+                                <h3>Spaghetti Carbonara</h3>
+                                <p>Un plat italien crémeux et savoureux</p>
+                                <span class="bouton-favoris">❤️</span>
+                            </div>
+                            <div class="recette-meta">
+                                <span>⏱️ 30 min</span>
+                                <span>👥 6 pers</span>
+                                <span>⭐ 4.9</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recette-card">
+                        <div class="recette-image">
+                            <a href=""><img src="./img/tarte_aux_pommes.jpg" alt="Image Tarte aux pommes" /></a>
+                        </div>
+                        <div class="recettes-content">
+                            <div class="recette-summarize">
+                                <h3>Tarte aux Pommes</h3>
+                                <p>Un dessert traditionnel français</p>
+                                <span class="bouton-favoris">🤍</span>
+                            </div>
+                            <div class="recette-meta">
+                                <span>⏱️ 45 min</span>
+                                <span>👥 8 pers</span>
+                                <span>⭐ 4.7</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </div>
+            </section>
+        </div>
+    </main>
     <footer>
         <p>© 2025 Robots-Délices. Tous droits réservés.</p>
     </footer>

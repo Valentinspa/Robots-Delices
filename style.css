@@ -1,4 +1,10 @@
 /* === SECTION D'ACCUEIL === */
+#section-container, #accueil, #categories, #recettes {
+    font-family: 'Arial', sans-serif;
+}
+main {
+    padding-top: 120px;
+}
 #accueil {
     background: linear-gradient(135deg, #6db4c4 0%, #5aa3b3 100%);
     padding: 60px 20px 60px;
@@ -708,3 +714,4 @@
         max-width: 1200px;
     }
 }
+

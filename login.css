@@ -2,16 +2,19 @@
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #f5d7d0 0%, #f8e6e1 100%);
     min-height: 100vh;
 }
-
 main {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 120px); /* Ajustement pour header/footer */
-    padding: 20px;
+    min-height: 100vh;
+    padding-top: 120px;
+    background: linear-gradient(135deg, #f5d7d0 0%, #f8e6e1 100%);
+    padding: 0;
+}
+
+#section-container, #login-container, .right-section {
     font-family: 'Arial', sans-serif;
 }
 
@@ -24,6 +27,7 @@ main {
     max-width: 900px;
     width: 100%;
     min-height: 500px;
+    
 }
 
 /* Section gauche avec le logo et le texte */
@@ -173,10 +177,16 @@ main {
 
 /* Responsive design */
 @media (max-width: 768px) {
+    main {
+        height: calc(100vh - 170px);
+        padding: 20px;
+    }
+    
     #section-container {
         flex-direction: column;
-        margin: 20px;
+        margin: 0;
         max-width: none;
+        width: calc(100% - 40px);
     }
     
     #login-container {
@@ -209,11 +219,12 @@ main {
 
 @media (max-width: 480px) {
     main {
+        height: calc(100vh - 140px);
         padding: 10px;
     }
     
     #section-container {
-        margin: 10px;
+        width: calc(100% - 20px);
     }
     
     #login-container {

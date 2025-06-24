@@ -1,17 +1,19 @@
-/* Styles pour la page de connexion */
+/* === AUTH-PAGES.CSS - Pour login.html, register.html et mdp-oublié.html === */
+
+/* Styles de base */
 body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
 }
+
 main {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    padding-top: 120px;
+    min-height: calc(100vh - 100px);
+    padding: 120px 20px 20px;
     background: linear-gradient(135deg, #f5d7d0 0%, #f8e6e1 100%);
-    padding: 0;
 }
 
 #section-container, #login-container, .right-section {
@@ -27,10 +29,10 @@ main {
     max-width: 900px;
     width: 100%;
     min-height: 500px;
-    
+    margin-top: 0;
 }
 
-/* Section gauche avec le logo et le texte */
+/* === SECTION GAUCHE (IDENTIQUE POUR TOUTES LES PAGES) === */
 #login-container {
     background: linear-gradient(135deg, #6db4c4 0%, #5aa3b3 100%);
     color: white;
@@ -45,13 +47,14 @@ main {
 }
 
 #login-container #logo {
-    width: 80px;
-    height: 80px;
+    width: 160px;
+    height: 160px;
     margin-bottom: 30px;
     background: white;
     border-radius: 15px;
-    padding: 15px;
+    padding: 20px;
 }
+
 
 #login-container p {
     font-size: 16px;
@@ -60,7 +63,7 @@ main {
     opacity: 0.95;
 }
 
-/* Section droite avec le formulaire */
+/* === SECTION DROITE (VARIABLE SELON LA PAGE) === */
 .right-section {
     flex: 1;
     display: flex;
@@ -68,7 +71,7 @@ main {
     min-width: 350px;
 }
 
-/* Container pour les onglets */
+/* Container pour les onglets (login et register uniquement) */
 .tabs-container {
     display: flex;
     border-bottom: 1px solid #e0e0e0;
@@ -89,13 +92,14 @@ main {
 
 .tabs-container a.active {
     color: #333;
-    border-bottom-color: #ff6b6b;
+    border-bottom-color: #6db4c4;
 }
 
 .tabs-container a:hover {
     color: #333;
 }
 
+/* Container pour le contenu du formulaire */
 #form-container {
     padding: 40px 40px 60px 40px;
     display: flex;
@@ -104,42 +108,43 @@ main {
     flex-grow: 1;
 }
 
-/* Formulaire */
-#login-form {
+/* === STYLES COMMUNS POUR TOUS LES FORMULAIRES === */
+form {
     display: flex;
     flex-direction: column;
     gap: 25px;
 }
 
-#login-form > div {
+form > div {
     display: flex;
     flex-direction: column;
 }
 
-#login-form label {
+form label {
     font-weight: 500;
     margin-bottom: 8px;
     color: #333;
     font-size: 14px;
 }
 
-#login-form input {
+form input {
     padding: 15px;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     font-size: 16px;
     transition: border-color 0.3s ease;
     background-color: #f8f9fa;
+    box-sizing: border-box;
 }
 
-#login-form input:focus {
+form input:focus {
     outline: none;
     border-color: #6db4c4;
     background-color: white;
 }
 
-#login-form button {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+form button {
+    background: linear-gradient(135deg, #6db4c4 0%, #5aa3b3 100%);
     color: white;
     border: none;
     padding: 15px;
@@ -151,16 +156,57 @@ main {
     margin-top: 10px;
 }
 
-#login-form button:hover {
+form button:hover {
+    background: linear-gradient(135deg, #5aa3b3 0%, #4a929f 100%);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+    box-shadow: 0 5px 15px rgba(109, 180, 196, 0.3);
 }
 
-#login-form button:active {
+form button:active {
     transform: translateY(0);
 }
 
-/* Lien mot de passe oublié */
+/* === STYLES SPÉCIFIQUES PAR PAGE === */
+
+/* Page de connexion */
+.login-page .tabs-container a[href*="login"] {
+    color: #333;
+    border-bottom-color: #6db4c4;
+}
+
+/* Page d'inscription */
+.register-page .tabs-container a[href*="register"] {
+    color: #333;
+    border-bottom-color: #6db4c4;
+}
+
+/* Page mot de passe oublié - Pas d'onglets */
+.password-reset-page .tabs-container {
+    display: none;
+}
+
+.password-reset-page #form-container {
+    padding-top: 60px;
+}
+
+.password-reset-page h2 {
+    color: #6db4c4;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.password-reset-page .form-description {
+    color: #64748b;
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* === LIENS DE NAVIGATION === */
+#form-container > p,
 #form-container > a {
     text-align: center;
     margin-top: 20px;
@@ -170,16 +216,25 @@ main {
     transition: color 0.3s ease;
 }
 
-#form-container > a:hover {
-    color: #ff6b6b;
+#form-container > a:hover,
+#form-container > p a:hover {
+    color: #5aa3b3;
     text-decoration: underline;
 }
 
-/* Responsive design */
+#form-container > p a {
+    color: #6db4c4;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* === RESPONSIVE DESIGN === */
+
+/* Tablettes (768px et moins) */
 @media (max-width: 768px) {
     main {
-        height: calc(100vh - 170px);
-        padding: 20px;
+        min-height: calc(100vh - 80px);
+        padding: 100px 20px 20px;
     }
     
     #section-container {
@@ -206,21 +261,33 @@ main {
         padding: 40px 30px;
     }
     
+    .password-reset-page #form-container {
+        padding-top: 40px;
+    }
+    
+    @media (max-width: 768px) {
     #login-container #logo {
-        width: 60px;
-        height: 60px;
+        width: 100px;
+        height: 100px;
         margin-bottom: 20px;
     }
+}
+
     
     #login-container p {
         font-size: 14px;
     }
+    
+    .password-reset-page h2 {
+        font-size: 1.6rem;
+    }
 }
 
+/* Smartphones (480px et moins) */
 @media (max-width: 480px) {
     main {
-        height: calc(100vh - 140px);
-        padding: 10px;
+        min-height: calc(100vh - 70px);
+        padding: 90px 10px 20px;
     }
     
     #section-container {
@@ -235,7 +302,48 @@ main {
         padding: 20px 20px 0 20px;
     }
     
+    .tabs-container a {
+        margin-right: 20px;
+        font-size: 14px;
+    }
+    
     #form-container {
         padding: 30px 20px;
+    }
+    
+    .password-reset-page #form-container {
+        padding-top: 30px;
+    }
+    
+    .password-reset-page h2 {
+        font-size: 1.4rem;
+    }
+    
+    .password-reset-page .form-description {
+        font-size: 0.9rem;
+    }
+}
+
+/* Très petits écrans (320px et moins) */
+@media (max-width: 320px) {
+    main {
+        padding: 80px 5px 15px;
+    }
+    
+    #login-container {
+        padding: 25px 15px;
+    }
+    
+    #form-container {
+        padding: 25px 15px;
+    }
+    
+    .tabs-container {
+        padding: 15px 15px 0 15px;
+    }
+    
+    .tabs-container a {
+        margin-right: 15px;
+        font-size: 13px;
     }
 }

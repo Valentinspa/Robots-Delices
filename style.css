@@ -2,22 +2,25 @@
 #section-container, #accueil, #categories, #recettes {
     font-family: 'Arial', sans-serif;
 }
+
 main {
-    padding-top: 120px;
+    padding-top: 120px; /* 100px header + 20px marge */
+    min-height: calc(100vh - 120px);
 }
+
 #accueil {
     background: linear-gradient(135deg, #6db4c4 0%, #5aa3b3 100%);
     padding: 60px 20px 60px;
     text-align: center;
-    height: 400px;
+    height: 480px; /* Augmenté de 80px */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
     overflow: hidden;
-    margin-top: -120px;
-    padding-top: 160px;
+    margin-top: -120px; /* Compenser le padding-top du main */
+    padding-top: 200px; /* 100px header + 100px espace (au lieu de 60px) */
 }
 
 /* Titre principal */
@@ -418,12 +421,18 @@ main {
 
 /* Tablettes (768px et moins) */
 @media (max-width: 768px) {
+    /* Ajustement général du main */
+    main {
+        padding-top: 100px; /* 80px header + 20px marge */
+        min-height: calc(100vh - 100px);
+    }
+    
     /* Section Accueil */
     #accueil {
-        height: 360px;
+        height: 420px; /* Augmenté proportionnellement */
         padding: 50px 20px 50px;
-        margin-top: -90px;
-        padding-top: 130px;
+        margin-top: -100px; /* Compenser le nouveau padding-top */
+        padding-top: 160px; /* 80px header + 80px espace (au lieu de 50px) */
     }
     
     #accueil h1 {
@@ -543,12 +552,18 @@ main {
 
 /* Smartphones (480px et moins) */
 @media (max-width: 480px) {
+    /* Ajustement général du main */
+    main {
+        padding-top: 90px; /* 70px header + 20px marge */
+        min-height: calc(100vh - 90px);
+    }
+    
     /* Section Accueil */
     #accueil {
-        height: 320px;
+        height: 380px; /* Augmenté proportionnellement */
         padding: 40px 15px 40px;
-        margin-top: -70px;
-        padding-top: 110px;
+        margin-top: -90px; /* Compenser le nouveau padding-top */
+        padding-top: 130px; /* 70px header + 60px espace (au lieu de 40px) */
     }
     
     #accueil h1 {
@@ -673,9 +688,9 @@ main {
 /* Très petits écrans (320px et moins) */
 @media (max-width: 320px) {
     #accueil {
-        height: 300px;
+        height: 360px; /* Augmenté proportionnellement */
         padding: 35px 10px 35px;
-        padding-top: 100px;
+        padding-top: 120px; /* 70px header + 50px espace (au lieu de 30px) */
     }
     
     #accueil h1 {
@@ -714,4 +729,3 @@ main {
         max-width: 1200px;
     }
 }
-

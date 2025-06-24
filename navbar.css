@@ -5,7 +5,6 @@
     box-sizing: border-box;
 }
 
-
 /* Header principal */
 header {
     background: white;
@@ -15,6 +14,7 @@ header {
     width: 100%;
     z-index: 1000;
     border-bottom: 1px solid #f1f5f9;
+    height: 100px; /* Hauteur fixe cohérente */
 }
 
 #section {
@@ -24,7 +24,7 @@ header {
     padding: 1.5rem 3rem;
     max-width: 1400px;
     margin: 0 auto;
-    height: 120px;
+    height: 100px; /* Cohérent avec le header */
     position: relative;
 }
 
@@ -48,7 +48,7 @@ header {
 }
 
 #logo {
-    height: 100px;
+    height: 80px;
     width: auto;
 }
 
@@ -57,18 +57,15 @@ header {
     display: none;
 }
 
-/* Burger menu avec corrections - VERSION CORRIGÉE */
+/* Burger menu avec positionnement absolu pour croix parfaite */
 .burger-menu {
     display: none;
-    flex-direction: column;
-    justify-content: space-between; /* Espacement égal entre les barres */
-    width: 40px;
-    height: 32px;
+    width: 48px; /* CORRECTION: Taille augmentée */
+    height: 48px; /* CORRECTION: Carré plus grand */
     cursor: pointer;
     z-index: 1001;
     position: relative;
-    padding: 6px 4px; /* Padding ajusté pour centrer */
-    border-radius: 10px;
+    border-radius: 12px; /* CORRECTION: Border-radius proportionnel */
     transition: all 0.3s ease;
     background: rgba(109, 180, 196, 0.1);
     border: 2px solid transparent;
@@ -81,15 +78,28 @@ header {
 }
 
 .burger-line {
-    width: 100%;
-    height: 3px;
+    width: 26px; /* CORRECTION: Largeur augmentée */
+    height: 3px; /* CORRECTION: Hauteur augmentée pour plus de visibilité */
     background: linear-gradient(45deg, #6db4c4, #5aa3b3);
     border-radius: 2px;
     transition: all 0.3s ease;
-    transform-origin: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* Centrage horizontal parfait */
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-    flex-shrink: 0; /* Empêche la réduction des barres */
-    min-height: 3px; /* Hauteur minimale garantie */
+}
+
+/* Position des 3 barres en mode normal - ESPACEMENT MATHÉMATIQUEMENT ÉGAL */
+.burger-line:nth-child(1) {
+    top: 12px; /* CORRECTION: Calcul précis pour espacement égal */
+}
+
+.burger-line:nth-child(2) {
+    top: 22.5px; /* CORRECTION: Centre parfait du carré (48px ÷ 2 - 1.5px) */
+}
+
+.burger-line:nth-child(3) {
+    top: 33px; /* CORRECTION: Espacement égal (12px + 10.5px + 10.5px = 33px) */
 }
 
 /* Animation du burger menu quand le menu est ouvert */
@@ -102,18 +112,22 @@ header {
     background: linear-gradient(45deg, #EF4444, #DC2626);
 }
 
-/* Transformation en croix - CORRECTION */
+/* Transformation en croix PARFAITE avec positionnement absolu */
 #menu-toggle:checked + .burger-menu .burger-line:nth-child(1) {
-    transform: rotate(45deg) translate(7px, 7px);
+    top: 22.5px; /* CORRECTION: Se déplace au centre exact du carré 48x48 */
+    transform: translateX(-50%) rotate(45deg); /* Centrage + rotation */
+    transform-origin: center;
 }
 
 #menu-toggle:checked + .burger-menu .burger-line:nth-child(2) {
     opacity: 0;
-    transform: scale(0);
+    transform: translateX(-50%) scale(0);
 }
 
 #menu-toggle:checked + .burger-menu .burger-line:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
+    top: 22.5px; /* CORRECTION: Se déplace au centre exact du carré 48x48 */
+    transform: translateX(-50%) rotate(-45deg); /* Centrage + rotation */
+    transform-origin: center;
 }
 
 .nav-container {
@@ -213,16 +227,14 @@ header {
     pointer-events: all;
 }
 
-
 /* CORRECTION POUR LES ANCRES - SCROLL OFFSET */
 html {
     scroll-behavior: smooth;
-    
 }
 
 /* Correction spécifique pour les sections avec des ancres */
 section[id] {
-    scroll-margin-top: 140px; /* Alternative pour navigateurs plus anciens */
+    scroll-margin-top: 120px; /* Alternative pour navigateurs plus anciens */
 }
 
 /* Ancres spécifiques de votre site */
@@ -231,8 +243,9 @@ section[id] {
 #favoris,
 #ajouts-recettes,
 #accueil {
-    scroll-margin-top: 140px;
+    scroll-margin-top: 120px;
 }
+
 header, header * {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 1rem;
@@ -265,63 +278,104 @@ header, header * {
         font-size: 0.85rem;
     }
 
-    /* Corrections burger menu pour écrans moyens */
+    /* Burger menu pour écrans moyens */
     .burger-menu {
-        width: 38px;
-        height: 30px;
-        padding: 5px 3px;
-        justify-content: space-between;
+        width: 44px; /* CORRECTION: Taille augmentée */
+        height: 44px; /* CORRECTION: Carré plus grand */
+        border-radius: 11px;
     }
     
     .burger-line {
+        width: 24px; /* CORRECTION: Largeur augmentée */
         height: 3px;
-        flex-shrink: 0;
-        min-height: 3px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .burger-line:nth-child(1) {
+        top: 11px; /* CORRECTION: Calcul précis pour carré 44x44 */
+    }
+    
+    .burger-line:nth-child(2) {
+        top: 20.5px; /* CORRECTION: Centre parfait (44px ÷ 2 - 1.5px) */
+    }
+    
+    .burger-line:nth-child(3) {
+        top: 30px; /* CORRECTION: Espacement égal (11px + 9.5px + 9.5px = 30px) */
     }
     
     #menu-toggle:checked + .burger-menu .burger-line:nth-child(1) {
-        transform: rotate(45deg) translate(6px, 6px);
+        top: 20.5px; /* CORRECTION: Centre du carré */
+        transform: translateX(-50%) rotate(45deg);
+    }
+    
+    #menu-toggle:checked + .burger-menu .burger-line:nth-child(2) {
+        transform: translateX(-50%) scale(0);
     }
     
     #menu-toggle:checked + .burger-menu .burger-line:nth-child(3) {
-        transform: rotate(-45deg) translate(6px, -6px);
+        top: 20.5px; /* CORRECTION: Centre du carré */
+        transform: translateX(-50%) rotate(-45deg);
     }
 }
 
 /* Styles responsifs - VERSION HARMONISÉE */
 @media screen and (max-width: 768px) {
+    /* Réduction de la hauteur du header */
+    header {
+        height: 80px;
+    }
+    
     /* Afficher le burger menu */
     .burger-menu {
-        display: flex;
-        width: 36px;
-        height: 28px;
-        padding: 5px 3px;
-        justify-content: space-between;
+        display: block;
+        width: 42px; /* CORRECTION: Taille augmentée */
+        height: 42px; /* CORRECTION: Carré plus grand */
+        border-radius: 10px;
     }
 
     .burger-line {
+        width: 22px; /* CORRECTION: Largeur augmentée */
         height: 3px;
-        flex-shrink: 0;
-        min-height: 3px;
+        left: 50%;
+        transform: translateX(-50%);
     }
-
+    
+    .burger-line:nth-child(1) {
+        top: 10px; /* CORRECTION: Calcul précis pour carré 42x42 */
+    }
+    
+    .burger-line:nth-child(2) {
+        top: 19.5px; /* CORRECTION: Centre parfait (42px ÷ 2 - 1.5px) */
+    }
+    
+    .burger-line:nth-child(3) {
+        top: 29px; /* CORRECTION: Espacement égal (10px + 9.5px + 9.5px = 29px) */
+    }
+    
     #menu-toggle:checked + .burger-menu .burger-line:nth-child(1) {
-        transform: rotate(45deg) translate(6px, 6px);
+        top: 19.5px; /* CORRECTION: Centre du carré */
+        transform: translateX(-50%) rotate(45deg);
     }
-
+    
+    #menu-toggle:checked + .burger-menu .burger-line:nth-child(2) {
+        transform: translateX(-50%) scale(0);
+    }
+    
     #menu-toggle:checked + .burger-menu .burger-line:nth-child(3) {
-        transform: rotate(-45deg) translate(6px, -6px);
+        top: 19.5px; /* CORRECTION: Centre du carré */
+        transform: translateX(-50%) rotate(-45deg);
     }
 
     /* CORRECTION POUR LE LOGO - Réduire la taille et ajuster l'espacement */
     #section {
         padding: 1rem 1.5rem;
-        height: 90px; /* Réduction de la hauteur du header */
-        gap: 1rem; /* Ajout d'un gap entre les éléments */
+        height: 80px; /* Cohérent avec le header */
+        gap: 1.5rem; /* CORRECTION: gap plus généreux entre logo et burger */
     }
 
     #logo {
-        height: 55px; /* Réduction significative du logo */
+        height: 60px; /* Réduction du logo */
         max-width: 150px; /* Limite la largeur max */
     }
 
@@ -418,21 +472,9 @@ header, header * {
         height: 100vh;
     }
 
-    /* Ajustement du contenu principal pour tablette */
-    #section-container,
-    main,
-    .main-content,
-    .content,
-    .page-content {
-        margin-top: 90px;
-        min-height: calc(100vh - 90px);
-    }
-
-    
-
     /* Ajustement scroll pour les ancres en mode tablette */
     html {
-        scroll-padding-top: 110px; /* 90px header + 20px marge */
+        scroll-padding-top: 100px; /* 80px header + 20px marge */
     }
 
     section[id],
@@ -441,44 +483,67 @@ header, header * {
     #favoris,
     #ajouts-recettes,
     #accueil {
-        scroll-margin-top: 110px;
+        scroll-margin-top: 100px;
     }
 }
 
 @media screen and (max-width: 480px) {
     /* CORRECTION POUR TRÈS PETITS ÉCRANS */
+    header {
+        height: 70px;
+    }
+    
     #section {
         padding: 0.75rem 1rem;
-        height: 70px; /* Encore plus petit pour mobile */
+        height: 70px; /* Cohérent avec le header */
         justify-content: space-between;
         align-items: center;
+        gap: 1rem; /* CORRECTION: espacement optimal */
     }
 
     #logo {
-        height: 45px; /* Logo encore plus petit */
+        height: 50px; /* Logo encore plus petit */
         max-width: 120px;
     }
 
     /* Réduction du burger menu pour très petits écrans */
     .burger-menu {
-        width: 32px;
-        height: 26px;
-        padding: 4px 2px;
-        justify-content: space-between;
+        width: 38px; /* CORRECTION: Taille augmentée même pour petit écran */
+        height: 38px; /* CORRECTION: Carré plus grand */
+        border-radius: 9px;
     }
 
     .burger-line {
+        width: 20px; /* CORRECTION: Largeur augmentée */
         height: 3px;
-        flex-shrink: 0;
-        min-height: 3px;
+        left: 50%;
+        transform: translateX(-50%);
     }
-
+    
+    .burger-line:nth-child(1) {
+        top: 9px; /* CORRECTION: Calcul précis pour carré 38x38 */
+    }
+    
+    .burger-line:nth-child(2) {
+        top: 17.5px; /* CORRECTION: Centre parfait (38px ÷ 2 - 1.5px) */
+    }
+    
+    .burger-line:nth-child(3) {
+        top: 26px; /* CORRECTION: Espacement égal (9px + 8.5px + 8.5px = 26px) */
+    }
+    
     #menu-toggle:checked + .burger-menu .burger-line:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
+        top: 17.5px; /* CORRECTION: Centre du carré */
+        transform: translateX(-50%) rotate(45deg);
     }
-
+    
+    #menu-toggle:checked + .burger-menu .burger-line:nth-child(2) {
+        transform: translateX(-50%) scale(0);
+    }
+    
     #menu-toggle:checked + .burger-menu .burger-line:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
+        top: 17.5px; /* CORRECTION: Centre du carré */
+        transform: translateX(-50%) rotate(-45deg);
     }
 
     .nav-container {
@@ -499,18 +564,6 @@ header, header * {
     .nav-menu li:nth-last-child(1) a {
         padding: 1rem 1.2rem;
     }
-
-    /* Ajustement du contenu principal pour petits mobiles */
-    #section-container,
-    main,
-    .main-content,
-    .content,
-    .page-content {
-        margin-top: 70px;
-        min-height: calc(100vh - 70px);
-    }
-
-    
 
     /* Ajustement scroll pour les ancres en mode mobile */
     html {

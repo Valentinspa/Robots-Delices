@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./navbar.css">
+    <link rel="stylesheet" href="./auth-pages.css">
     <link rel="stylesheet" href="footer.css">
-    <title>Inscription</title>
+    <title>Inscription - Robots-Délices</title>
 </head>
-<body>
+<body class="register-page">
     <header>
         <div id="section">
             <div id="header-title">
@@ -35,23 +36,47 @@
         </div>
     </header>
     <main>
-        <h1>Inscrivez-vous sur Robots-Délices</h1>
-        <form id="register-form" action="/register" method="POST">
-            <div>
-                <label for="email">Email :</label>
-                <input type="email" id="email" name="email" required>
+        <div id="section-container">
+            <!-- Section gauche identique à login.html -->
+            <div id="login-container">
+                <img alt="Logo Robots-Délices" id="logo" src="./img/logo_robots_delices.png"/>
+                <p>Rejoignez notre communauté de passionnés de cuisine et partagez vos meilleures recettes</p>
             </div>
-            <div>
-                <label for="password">Mot de passe :</label>
-                <input type="password" id="password" name="password" required>
+            
+            <!-- Section droite avec formulaire d'inscription -->
+            <div class="right-section">
+                <div class="tabs-container">
+                    <a href="./login.html">Connexion</a>
+                    <a href="./register.html" class="active">Inscription</a>
+                </div>
+                <div id="form-container">
+                    <form id="register-form" action="/register" method="POST">
+                        <div>
+                            <label for="prenom">Prénom :</label>
+                            <input type="text" id="prenom" name="prenom" required>
+                        </div>
+                        <div>
+                            <label for="nom">Nom :</label>
+                            <input type="text" id="nom" name="nom" required>
+                        </div>
+                        <div>
+                            <label for="email">Email :</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div>
+                            <label for="password">Mot de passe :</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        <div>
+                            <label for="confirm-password">Confirmer le mot de passe :</label>
+                            <input type="password" id="confirm-password" name="confirm-password" required>
+                        </div>
+                        <button type="submit">S'inscrire</button>
+                    </form>
+                    <p>Déjà inscrit ? <a href="./login.html">Se connecter</a></p>
+                </div>
             </div>
-            <div>
-                <label for="confirm-password">Confirmer le mot de passe :</label>
-                <input type="password" id="confirm-password" name="confirm-password" required>
-            </div>
-            <button type="submit">S'inscrire</button>
-        </form>
-        <p>Déjà inscrit ? <a href="./login.html">Se connecter</a></p>
+        </div>
     </main>
     <footer>
         <p>© 2025 Robots-Délices. Tous droits réservés.</p>

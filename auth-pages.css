@@ -11,8 +11,8 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 100px);
-    padding: 120px 20px 20px;
+    min-height: calc(100vh - 100px); /* 100px header */
+    padding: 120px 20px 20px; /* 100px header + 20px marge */
     background: linear-gradient(135deg, #f5d7d0 0%, #f8e6e1 100%);
 }
 
@@ -54,7 +54,6 @@ main {
     border-radius: 15px;
     padding: 20px;
 }
-
 
 #login-container p {
     font-size: 16px;
@@ -228,13 +227,41 @@ form button:active {
     font-weight: 600;
 }
 
-/* === RESPONSIVE DESIGN === */
+/* ===== BREAKPOINTS HARMONISÉS ===== */
 
-/* Tablettes (768px et moins) */
-@media (max-width: 768px) {
+/* Desktop Large (1200px+) */
+/* Styles par défaut ci-dessus */
+
+/* Desktop Standard (1024px-1199px) */
+@media screen and (max-width: 1199px) and (min-width: 1024px) {
     main {
-        min-height: calc(100vh - 80px);
-        padding: 100px 20px 20px;
+        padding: 110px 20px 20px; /* Léger ajustement */
+    }
+    
+    #section-container {
+        max-width: 850px;
+    }
+    
+    #login-container {
+        padding: 50px 35px;
+        min-width: 320px;
+    }
+    
+    #login-container #logo {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .right-section {
+        min-width: 320px;
+    }
+}
+
+/* Tablette (768px-1023px) */
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+    main {
+        min-height: calc(100vh - 80px); /* 80px header */
+        padding: 100px 20px 20px; /* 80px header + 20px marge */
     }
     
     #section-container {
@@ -242,11 +269,22 @@ form button:active {
         margin: 0;
         max-width: none;
         width: calc(100% - 40px);
+        max-width: 600px;
     }
     
     #login-container {
         min-width: auto;
         padding: 40px 30px;
+    }
+    
+    #login-container #logo {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 25px;
+    }
+    
+    #login-container p {
+        font-size: 15px;
     }
     
     .right-section {
@@ -265,37 +303,109 @@ form button:active {
         padding-top: 40px;
     }
     
-    @media (max-width: 768px) {
-    #login-container #logo {
-        width: 100px;
-        height: 100px;
-        margin-bottom: 20px;
-    }
-}
-
-    
-    #login-container p {
-        font-size: 14px;
-    }
-    
     .password-reset-page h2 {
         font-size: 1.6rem;
     }
 }
 
-/* Smartphones (480px et moins) */
-@media (max-width: 480px) {
+/* Mobile (767px et moins) */
+@media screen and (max-width: 767px) {
     main {
-        min-height: calc(100vh - 70px);
-        padding: 90px 10px 20px;
+        min-height: calc(100vh - 80px); /* 80px header */
+        padding: 100px 15px 20px; /* 80px header + 20px marge */
+    }
+    
+    #section-container {
+        flex-direction: column;
+        margin: 0;
+        max-width: none;
+        width: calc(100% - 30px);
+        max-width: 500px;
+    }
+    
+    #login-container {
+        min-width: auto;
+        padding: 35px 25px;
+    }
+    
+    #login-container #logo {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 20px;
+    }
+    
+    #login-container p {
+        font-size: 14px;
+    }
+    
+    .right-section {
+        min-width: auto;
+    }
+    
+    .tabs-container {
+        padding: 25px 25px 0 25px;
+    }
+    
+    .tabs-container a {
+        margin-right: 25px;
+        font-size: 15px;
+    }
+    
+    #form-container {
+        padding: 35px 25px;
+    }
+    
+    .password-reset-page #form-container {
+        padding-top: 35px;
+    }
+    
+    .password-reset-page h2 {
+        font-size: 1.5rem;
+    }
+    
+    .password-reset-page .form-description {
+        font-size: 0.95rem;
+    }
+    
+    form {
+        gap: 20px;
+    }
+    
+    form input {
+        padding: 12px;
+        font-size: 15px;
+    }
+    
+    form button {
+        padding: 12px;
+        font-size: 15px;
+    }
+}
+
+/* Petit Mobile (480px et moins) */
+@media screen and (max-width: 480px) {
+    main {
+        min-height: calc(100vh - 70px); /* 70px header */
+        padding: 90px 10px 20px; /* 70px header + 20px marge */
     }
     
     #section-container {
         width: calc(100% - 20px);
+        max-width: 400px;
     }
     
     #login-container {
         padding: 30px 20px;
+    }
+    
+    #login-container #logo {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 15px;
+    }
+    
+    #login-container p {
+        font-size: 13px;
     }
     
     .tabs-container {
@@ -305,6 +415,7 @@ form button:active {
     .tabs-container a {
         margin-right: 20px;
         font-size: 14px;
+        padding: 12px 0;
     }
     
     #form-container {
@@ -322,16 +433,53 @@ form button:active {
     .password-reset-page .form-description {
         font-size: 0.9rem;
     }
+    
+    form {
+        gap: 18px;
+    }
+    
+    form label {
+        font-size: 13px;
+    }
+    
+    form input {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    form button {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    #form-container > p,
+    #form-container > a {
+        font-size: 13px;
+    }
 }
 
-/* Très petits écrans (320px et moins) */
-@media (max-width: 320px) {
+/* Très petit Mobile (320px et moins) */
+@media screen and (max-width: 320px) {
     main {
         padding: 80px 5px 15px;
     }
     
+    #section-container {
+        width: calc(100% - 10px);
+    }
+    
     #login-container {
         padding: 25px 15px;
+    }
+    
+    #login-container #logo {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 10px;
+    }
+    
+    #login-container p {
+        font-size: 12px;
     }
     
     #form-container {
@@ -344,6 +492,25 @@ form button:active {
     
     .tabs-container a {
         margin-right: 15px;
+        font-size: 13px;
+        padding: 10px 0;
+    }
+    
+    .password-reset-page h2 {
+        font-size: 1.3rem;
+    }
+    
+    form {
+        gap: 15px;
+    }
+    
+    form input {
+        padding: 8px;
+        font-size: 13px;
+    }
+    
+    form button {
+        padding: 8px;
         font-size: 13px;
     }
 }

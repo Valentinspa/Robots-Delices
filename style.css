@@ -12,15 +12,15 @@ main {
     background: linear-gradient(135deg, #6db4c4 0%, #5aa3b3 100%);
     padding: 60px 20px 60px;
     text-align: center;
-    height: 480px; /* Augmenté de 80px */
+    height: 480px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
     overflow: hidden;
-    margin-top: -120px; /* Compenser le padding-top du main */
-    padding-top: 200px; /* 100px header + 100px espace (au lieu de 60px) */
+    margin-top: -120px;
+    padding-top: 200px; /* 100px header + 100px espace */
 }
 
 /* Titre principal */
@@ -417,10 +417,54 @@ main {
 .recette-card:nth-child(2) { animation-delay: 0.2s; }
 .recette-card:nth-child(3) { animation-delay: 0.3s; }
 
-/* === RESPONSIVE DESIGN === */
+/* ===== BREAKPOINTS HARMONISÉS ===== */
 
-/* Tablettes (768px et moins) */
-@media (max-width: 768px) {
+/* Desktop Large (1200px+) */
+@media (min-width: 1200px) {
+    #categories-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1000px;
+    }
+    
+    #recettes-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1200px;
+    }
+}
+
+/* Desktop Standard (1024px-1199px) - OPTIMISÉ POUR 1024px */
+@media screen and (max-width: 1199px) and (min-width: 1024px) {
+    /* Réduction des espacements pour 1024px */
+    #categories-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* CORRECTION: Plus petit */
+        gap: 20px; /* CORRECTION: Gap réduit */
+        padding: 0 15px; /* CORRECTION: Padding réduit */
+    }
+    
+    #recettes-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* CORRECTION: Plus petit */
+        gap: 20px; /* CORRECTION: Gap réduit */
+        padding: 0 15px; /* CORRECTION: Padding réduit */
+    }
+    
+    /* Réduction des sections */
+    #categories {
+        padding: 70px 15px; /* CORRECTION: Padding réduit */
+    }
+    
+    #recettes {
+        padding: 70px 15px; /* CORRECTION: Padding réduit */
+    }
+    
+    /* Ajustement des titres */
+    #categories-title h2,
+    #recettes-title h2 {
+        font-size: 2.2rem; /* CORRECTION: Plus petit */
+    }
+}
+
+/* Tablette (768px-1023px) */
+@media screen and (max-width: 1023px) and (min-width: 768px) {
     /* Ajustement général du main */
     main {
         padding-top: 100px; /* 80px header + 20px marge */
@@ -429,10 +473,10 @@ main {
     
     /* Section Accueil */
     #accueil {
-        height: 420px; /* Augmenté proportionnellement */
+        height: 420px;
         padding: 50px 20px 50px;
-        margin-top: -100px; /* Compenser le nouveau padding-top */
-        padding-top: 160px; /* 80px header + 80px espace (au lieu de 50px) */
+        margin-top: -100px;
+        padding-top: 160px; /* 80px header + 80px espace */
     }
     
     #accueil h1 {
@@ -550,8 +594,134 @@ main {
     }
 }
 
-/* Smartphones (480px et moins) */
-@media (max-width: 480px) {
+/* Mobile (767px et moins) */
+@media screen and (max-width: 767px) {
+    /* Ajustement général du main */
+    main {
+        padding-top: 100px; /* 80px header + 20px marge */
+        min-height: calc(100vh - 100px);
+    }
+    
+    /* Section Accueil */
+    #accueil {
+        height: 400px;
+        padding: 45px 20px 45px;
+        margin-top: -100px;
+        padding-top: 150px; /* 80px header + 70px espace */
+    }
+    
+    #accueil h1 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+    
+    #accueil p {
+        font-size: 0.95rem;
+        margin-bottom: 30px;
+    }
+    
+    #search-bar {
+        max-width: 350px;
+        padding: 6px;
+    }
+    
+    #search-bar input[type="text"] {
+        padding: 14px 20px;
+        font-size: 0.9rem;
+    }
+    
+    #search-bar button {
+        padding: 14px 26px;
+        font-size: 0.9rem;
+    }
+    
+    /* Section Catégories */
+    #categories {
+        padding: 50px 15px;
+    }
+    
+    #categories-title h2 {
+        font-size: 1.9rem;
+    }
+    
+    #categories-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 15px;
+        padding: 0;
+    }
+    
+    .categories-card {
+        padding: 25px 15px;
+        border-radius: 12px;
+    }
+    
+    .categories-icons {
+        font-size: 2.8rem;
+        width: 65px;
+        height: 65px;
+        margin-bottom: 15px;
+    }
+    
+    .categories-card h3 {
+        font-size: 1.15rem;
+        margin-bottom: 8px;
+    }
+    
+    .categories-card p {
+        font-size: 0.88rem;
+    }
+    
+    /* Section Recettes */
+    #recettes {
+        padding: 50px 15px;
+    }
+    
+    #recettes-title h2 {
+        font-size: 1.9rem;
+    }
+    
+    #recettes-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 0;
+    }
+    
+    .recette-image {
+        height: 190px;
+    }
+    
+    .recettes-content {
+        padding: 18px;
+    }
+    
+    .recette-summarize h3 {
+        font-size: 1.25rem;
+        margin-bottom: 8px;
+    }
+    
+    .recette-summarize p {
+        font-size: 0.92rem;
+    }
+    
+    .bouton-favoris {
+        width: 36px;
+        height: 36px;
+        font-size: 1.35rem;
+    }
+    
+    .recette-meta {
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    .recette-meta span {
+        font-size: 0.82rem;
+        padding: 4px 8px;
+    }
+}
+
+/* Petit Mobile (480px et moins) */
+@media screen and (max-width: 480px) {
     /* Ajustement général du main */
     main {
         padding-top: 90px; /* 70px header + 20px marge */
@@ -560,10 +730,10 @@ main {
     
     /* Section Accueil */
     #accueil {
-        height: 380px; /* Augmenté proportionnellement */
+        height: 380px;
         padding: 40px 15px 40px;
-        margin-top: -90px; /* Compenser le nouveau padding-top */
-        padding-top: 130px; /* 70px header + 60px espace (au lieu de 40px) */
+        margin-top: -90px;
+        padding-top: 130px; /* 70px header + 60px espace */
     }
     
     #accueil h1 {
@@ -685,12 +855,12 @@ main {
     }
 }
 
-/* Très petits écrans (320px et moins) */
-@media (max-width: 320px) {
+/* Très petit Mobile (320px et moins) */
+@media screen and (max-width: 320px) {
     #accueil {
-        height: 360px; /* Augmenté proportionnellement */
+        height: 360px;
         padding: 35px 10px 35px;
-        padding-top: 120px; /* 70px header + 50px espace (au lieu de 30px) */
+        padding-top: 120px; /* 70px header + 50px espace */
     }
     
     #accueil h1 {
@@ -714,18 +884,5 @@ main {
     #search-bar button {
         padding: 8px 16px;
         font-size: 0.8rem;
-    }
-}
-
-/* Desktop (1024px et plus) */
-@media (min-width: 1024px) {
-    #categories-grid {
-        grid-template-columns: repeat(3, 1fr);
-        max-width: 1000px;
-    }
-    
-    #recettes-grid {
-        grid-template-columns: repeat(3, 1fr);
-        max-width: 1200px;
     }
 }

@@ -25,8 +25,37 @@ footer p {
     letter-spacing: 0.025em;
 }
 
-/* Responsive Footer */
-@media (max-width: 768px) {
+/* ===== BREAKPOINTS HARMONISÉS ===== */
+
+/* Desktop Large (1200px+) */
+/* Styles par défaut ci-dessus */
+
+/* Desktop Standard (1024px-1199px) */
+@media screen and (max-width: 1199px) and (min-width: 1024px) {
+    footer {
+        padding: 1.4rem 2.5rem;
+        height: 110px;
+    }
+    
+    footer p {
+        font-size: 0.95rem;
+    }
+}
+
+/* Tablette (768px-1023px) */
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+    footer {
+        padding: 1.2rem 2rem;
+        height: 100px;
+    }
+    
+    footer p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Mobile (767px et moins) */
+@media screen and (max-width: 767px) {
     footer {
         padding: 1rem 1.5rem;
         height: auto;
@@ -38,7 +67,8 @@ footer p {
     }
 }
 
-@media (max-width: 480px) {
+/* Petit Mobile (480px et moins) */
+@media screen and (max-width: 480px) {
     footer {
         padding: 0.75rem 1rem;
         min-height: 70px;
@@ -46,5 +76,18 @@ footer p {
     
     footer p {
         font-size: 0.85rem;
+    }
+}
+
+/* Très petit Mobile (320px et moins) */
+@media screen and (max-width: 320px) {
+    footer {
+        padding: 0.6rem 0.8rem;
+        min-height: 60px;
+    }
+    
+    footer p {
+        font-size: 0.8rem;
+        letter-spacing: 0.02em;
     }
 }

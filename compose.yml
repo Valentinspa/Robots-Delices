@@ -19,7 +19,7 @@ services:
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=database
+      - MYSQL_DATABASE=Robots-Délices-DB
       - MYSQL_USER=user
       - MYSQL_PASSWORD=password
     volumes:
@@ -32,8 +32,8 @@ services:
       - "8080:80"
     environment:
       - PMA_HOST=db
-      - PMA_USER=user
-      - PMA_PASSWORD=password
+      - PMA_USER=root
+      - PMA_PASSWORD=root
     depends_on:
       - db
 volumes:

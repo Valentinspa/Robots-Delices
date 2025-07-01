@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db
--- Généré le : lun. 30 juin 2025 à 09:03
+-- Généré le : mar. 01 juil. 2025 à 17:18
 -- Version du serveur : 9.3.0
 -- Version de PHP : 8.2.28
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `Robots-Délices-DB`
+-- Base de données : `Robots-Délices`
 --
 
 -- --------------------------------------------------------
@@ -55,6 +55,7 @@ CREATE TABLE `favorites` (
 
 CREATE TABLE `recipes` (
   `id` int NOT NULL,
+  `slug` varchar(200) NOT NULL,
   `user_id` int DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
   `ingredients` text,
@@ -63,6 +64,14 @@ CREATE TABLE `recipes` (
   `photo` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `recipes`
+--
+
+INSERT INTO `recipes` (`id`, `slug`, `user_id`, `title`, `ingredients`, `instructions`, `cooking_time`, `photo`, `created_at`) VALUES
+(1, 'tarte_aux_pommes_traditionnelle_1', NULL, 'Tarte aux Pommes Traditionnelle', '1 pâte brisée, 6 pommes Golden, 80g de sucre en poudre, 50g de beurre, 2 œufs,\r\n20cl de crème fraîche, \r\n1 sachet de sucre vanillé, 1 pincée de cannelle', 'Préchauffez le four à 180°C (thermostat 6). Beurrez et farinez un moule à tarte de 28 cm de diamètre.\r\n\r\nÉtalez la pâte brisée dans le moule en la faisant bien adhérer aux bords. Piquez le fond avec une fourchette. \r\n\r\nÉpluchez les pommes et coupez-les en quartiers fins et réguliers. Retirez le cœur et les pépins.\r\n\r\nDisposez les quartiers de pommes sur la pâte en rosace, en les faisant se chevaucher légèrement. \r\n\r\nSaupoudrez les pommes de sucre en poudre et de cannelle selon votre goût. \r\n\r\nDans un bol, battez les œufs avec la crème fraîche et le sucre vanillé jusqu\'à obtenir un mélange homogène. \r\n\r\nVersez délicatement ce mélange sur les pommes, en veillant à ce qu\'il se répartisse bien. \r\n\r\nEnfournez pour 35 à 40 minutes jusqu\'à ce que le dessus soit bien doré et que la crème soit prise. \r\n\r\nLaissez refroidir 10 minutes avant de démouler. Servez tiède ou froid selon vos préférences. ', '45 min', '/img/tarte_aux_pommes.jpg', '2025-07-01 11:37:02'),
+(2, 'banane_1', NULL, 'Banane', 'banane, chantilly, chocolat', 'kvnvnfvnkvfkj\r\n\r\nbbbbebjr\r\n\r\nnjbfkkfkjf', '5 min', '/img/photo.jpg', '2025-07-01 12:26:54');
 
 -- --------------------------------------------------------
 
@@ -103,6 +112,7 @@ ALTER TABLE `favorites`
 --
 ALTER TABLE `recipes`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `slug` (`slug`),
   ADD KEY `user_id` (`user_id`);
 
 --
@@ -126,7 +136,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT pour la table `recipes`
 --
 ALTER TABLE `recipes`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `users`

@@ -9,32 +9,9 @@
     <title>Inscription - Robots-Délices</title>
 </head>
 <body class="register-page">
-    <header>
-        <div id="section">
-            <div id="header-title">
-                <a href="./index.html">
-                    <img id="logo" alt="Logo Robots-Délices" src="./img/logo_robots_delices.png">
-                </a>
-            </div>
-            <input id="menu-toggle" type="checkbox" />
-            <label class="burger-menu" for="menu-toggle">
-                <span class="burger-line"></span>
-                <span class="burger-line"></span>
-                <span class="burger-line"></span>
-            </label>
-            <div id="nav-container" class="nav-container">
-                <ul class="nav-menu">
-                    <li class="li"><a href="./index.html">Accueil</a></li>
-                    <li class="li"><a href="./index.html#recettes">Recettes</a></li>
-                    <li class="li"><a href="./index.html#categories">Catégories</a></li>
-                    <li class="li"><a href="./favoris.html">Mes favoris</a></li>
-                    <li class="li"><a href="./ajouter.html" class="ajouter-btn">+ Ajouter une recette</a></li>
-                    <li class="li"><a href="./login.html" class="connexion-btn">Connexion</a></li>
-                </ul>
-            </div>
-            <div class="menu-overlay"></div>
-        </div>
-    </header>
+    <?php
+    require_once 'header.php';
+    ?>
     <main>
         <div id="section-container">
             <!-- Section gauche -->
@@ -46,8 +23,8 @@
             <!-- Section droite avec formulaire d'inscription -->
             <div class="right-section">
                 <div class="tabs-container">
-                    <a href="./login.html">Connexion</a>
-                    <a href="./register.html" class="active">Inscription</a>
+                    <a href="./login.php">Connexion</a>
+                    <a href="./register.php" class="active">Inscription</a>
                 </div>
                 <div id="form-container">
                     <form id="register-form" action="/register" method="POST">
@@ -73,7 +50,7 @@
                         </div>
                         <button type="submit">S'inscrire</button>
                     </form>
-                    <p>Déjà inscrit ? <a href="./login.html">Se connecter</a></p>
+                    <p>Déjà inscrit ? <a href="./login.php">Se connecter</a></p>
                 </div>
             </div>
         </div>

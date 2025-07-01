@@ -9,32 +9,9 @@
     <title>Robots-Délices</title>
 </head>
 <body>
-    <header>
-        <div id="section">
-            <div id="header-title">
-                <a href="./index.html">
-                    <img id="logo" alt="Logo Robots-Délices" src="./img/logo_robots_delices.png">
-                </a>
-            </div>
-            <input id="menu-toggle" type="checkbox" />
-            <label class="burger-menu" for="menu-toggle">
-                <span class="burger-line"></span>
-                <span class="burger-line"></span>
-                <span class="burger-line"></span>
-            </label>
-            <div id="nav-container" class="nav-container">
-                <ul class="nav-menu">
-                    <li class="li"><a href="./index.html">Accueil</a></li>
-                    <li class="li"><a href="./index.html#recettes">Recettes</a></li>
-                    <li class="li"><a href="./index.html#categories">Catégories</a></li>
-                    <li class="li"><a href="./favoris.html">Mes favoris</a></li>
-                    <li class="li"><a href="./ajouter.html" class="ajouter-btn">+ Ajouter une recette</a></li>
-                    <li class="li"><a href="./login.html" class="connexion-btn">Connexion</a></li>
-                </ul>
-            </div>
-            <div class="menu-overlay"></div>
-        </div>
-    </header>
+    <?php
+    require_once 'header.php';
+    ?>
     <main>
         <div id="section-container">
             <section id="accueil">
@@ -127,7 +104,7 @@
                     </div>
                     <div class="recette-card">
                         <div class="recette-image">
-                            <a href="./recette-tarte-aux-pommes.html"><img src="./img/tarte_aux_pommes.jpg" alt="Image Tarte aux pommes" /></a>
+                            <a href="./recette.php?recette=tarte_aux_pommes_traditionnelle_1"><img src="./img/tarte_aux_pommes.jpg" alt="Image Tarte aux pommes" /></a>
                         </div>
                         <div class="recettes-content">
                             <div class="recette-summarize">

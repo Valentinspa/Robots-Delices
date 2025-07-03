@@ -52,7 +52,7 @@ $preparation = array_values($preparation);
             <!-- Recipe Hero -->
             <section class="recipe-hero">
                 <h1><?php echo $recipe['title']?></h1>
-                <p>Une délicieuse tarte aux pommes comme grand-mère la faisait, avec une pâte croustillante et des pommes fondantes parfumées à la cannelle</p>
+                <p><?php echo $recipe['description']?></p>
             </section>
 
             <!-- Recipe Image -->
@@ -60,7 +60,7 @@ $preparation = array_values($preparation);
                 <div class="recipe-image">
                     <img src="<?php echo $recipe['photo']?>" alt="<?php echo $recipe['title']?>">
                 </div>
-                <p class="image-caption">Une tarte aux pommes parfaitement dorée avec sa garniture fondante</p>
+                <p class="image-caption"><?php echo $recipe['image_caption']?></p>
             </section>
 
             <!-- Recipe Meta -->
@@ -72,12 +72,12 @@ $preparation = array_values($preparation);
                 </div>
                 <div class="meta-item">
                     <span class="meta-icon">👥</span>
-                    <span class="meta-value">6 pers.</span>
+                    <span class="meta-value"><?php echo $recipe['number_persons']?></span>
                     <span class="meta-label">Portions</span>
                 </div>
                 <div class="meta-item">
                     <span class="meta-icon">📈</span>
-                    <span class="meta-value">Facile</span>
+                    <span class="meta-value"><?php echo $recipe['difficulty']?></span>
                     <span class="meta-label">Difficulté</span>
                 </div>
                 <div class="meta-item">
@@ -117,26 +117,11 @@ $preparation = array_values($preparation);
                 </section>
             </div>
 
-            <!-- Recipe Notes -->
-            <section class="recipe-notes">
-                <h3 class="notes-title">Conseil du chef</h3>
-                <div class="notes-content">
-                    Pour une tarte encore plus savoureuse, vous pouvez ajouter une pointe de vanille dans la crème ou remplacer une partie du sucre par du miel. Choisissez des pommes bien fermes qui ne se déliteront pas à la cuisson.
-                </div>
-            </section>
-
             <!-- Recipe Footer -->
             <section class="recipe-footer">
                 <div class="rating-section">
                     <div class="rating-stars">★★★★★</div>
                     <p class="rating-text">4.8/5 basé sur 127 avis</p>
-                </div>
-                
-                <div class="recipe-tags">
-                    <span class="recipe-tag">Dessert</span>
-                    <span class="recipe-tag">Fruits</span>
-                    <span class="recipe-tag">Traditionnel</span>
-                    <span class="recipe-tag">Automne</span>
                 </div>
 
                 <div class="recipe-actions">

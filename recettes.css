@@ -289,32 +289,6 @@ main {
     border-left: 4px solid #6db4c4;
 }
 
-/* === RECIPE NOTES === */
-.recipe-notes {
-    background: white;
-    border-radius: 20px;
-    padding: 30px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(109, 180, 196, 0.1);
-}
-
-.notes-title {
-    color: #6db4c4;
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-}
-
-.notes-content {
-    background: rgba(109, 180, 196, 0.05);
-    padding: 20px;
-    border-radius: 12px;
-    border-left: 4px solid #6db4c4;
-    color: #1e293b;
-    line-height: 1.6;
-}
-
 /* === RECIPE FOOTER === */
 .recipe-footer {
     background: white;

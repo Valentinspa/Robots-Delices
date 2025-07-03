@@ -70,7 +70,7 @@
                 <div id="recettes-grid">
                     <div class="recette-card">
                         <div class="recette-image">
-                            <a href=""><img src="./img/salade_cesar.jpg" alt="Image Salade César" /></a>
+                            <a href="./recette.php?recette=salade_cesar_2"><img src="./img/salade_cesar.jpg" alt="Image Salade César" /></a>
                         </div>
                         <div class="recettes-content">
                             <div class="recette-summarize">

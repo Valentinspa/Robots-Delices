@@ -17,7 +17,7 @@
                     <li class="li"><a href="./index.php#recettes">Recettes</a></li>
                     <li class="li"><a href="./index.php#categories">Catégories</a></li>
                     <li class="li"><a href="./favoris.php">Mes favoris</a></li>
-                    <li class="li"><a href="./ajouter.php" class="ajouter-btn">+ Ajouter une recette</a></li>
+                    <li class="li"><a href="./ajout-recette.php" class="ajouter-btn">+ Ajouter une recette</a></li>
                     <li class="li"><a href="./login.php" class="connexion-btn">Connexion</a></li>
                 </ul>
             </div>

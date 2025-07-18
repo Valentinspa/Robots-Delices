@@ -1,3 +1,55 @@
+<?php
+session_start();
+// Include database connection
+require_once 'connexionBDD.php'; 
+require_once "csrf.php"; // Include CSRF protection
+
+$categories = $pdo->query("SELECT * FROM category")->fetchAll();
+// var_dump($categories);
+
+if($_SERVER['REQUEST_METHOD'] === 'POST') 
+{
+// <script>alert("BANANA HACK")</script>
+    // Initialize variables
+    $titre = htmlspecialchars($_POST['titre']) ?? '';
+    $categorie = htmlspecialchars($_POST['categorie']) ?? '';
+    $difficulte = htmlspecialchars($_POST['difficulte']) ?? 'facile';
+    $temps_preparation = htmlspecialchars($_POST['temps-preparation']) ?? '';
+    $portions = htmlspecialchars($_POST['portions']) ?? 1;
+    $description = htmlspecialchars($_POST['description']) ?? '';
+    $ingredients = htmlspecialchars($_POST['ingredients']) ?? "";
+    $instructions = htmlspecialchars($_POST['instructions']) ?? "";
+    $slug = strtolower(trim(preg_replace("/[^A-Za-z0-9à-üÀ-Ü-]+/", '_', $titre)));
+
+    $totalSameRecipes = $pdo->prepare("SELECT COUNT(*) FROM recipes WHERE slug LIKE ?");
+    $totalSameRecipes->execute([$slug . '%']);
+
+    $count = $totalSameRecipes->fetchColumn();
+    
+    $slug .= '_' . ($count + 1); // Append a number to make the slug unique
+    
+    // Handle file upload
+    $photo_path = '';
+    if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
+        $target_dir = "img/";
+        $photo_path = $target_dir . basename($_FILES["photo"]["name"]);
+        move_uploaded_file($_FILES["photo"]["tmp_name"], $photo_path);
+    }
+    // Validate CSRF token
+    if (!isset($_POST['csrf_token']) || !verifyCsrfToken($_POST['csrf_token'])) {
+        $error = "Invalid CSRF token.";
+    }  else{
+        // Insert recipe into database
+        $stmt = $pdo->prepare("INSERT INTO recipes (slug, title, description, ingredients, instructions, cooking_time, number_persons, difficulty, category_id, photo, image_caption) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->execute([$slug, $titre, $description, $ingredients, $instructions, $temps_preparation, $portions, $difficulte, $categorie, $photo_path, 'Photo de la recette']);
+    
+        // Redirect to the recipe page
+        header("Location: /recette.php?recette=" . urlencode($slug));
+        exit();
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -30,7 +82,7 @@
 
             <!-- Form Container -->
             <div class="form-container">
-                <form id="add-recipe-form" action="/ajouter-recette" method="POST" enctype="multipart/form-data">
+                <form id="add-recipe-form" action="/ajout-recette.php" method="POST" enctype="multipart/form-data">
                     <div class="form-grid">
                         <!-- Informations de base -->
                         <div class="form-section">
@@ -45,12 +97,9 @@
                                 <label for="categorie">Catégorie</label>
                                 <select id="categorie" name="categorie" required>
                                     <option value="">Choisir une catégorie</option>
-                                    <option value="entrees">🥗 Entrées</option>
-                                    <option value="plats">🍖 Plats</option>
-                                    <option value="desserts">🍰 Desserts</option>
-                                    <option value="boissons">🥤 Boissons</option>
-                                    <option value="vegetarien">🌱 Végétarien</option>
-                                    <option value="rapide">⚡ Rapide</option>
+                                    <?php foreach ($categories as $category): ?>
+                                        <option value="<?= $category['id']; ?>"><?= $category['category_logo'] . ' '. $category['category_name']; ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
 
@@ -99,7 +148,7 @@
                             <div class="dynamic-section">
                                 <div id="ingredients-container">
                                     <div class="ingredient-item">
-                                        <input type="text" name="ingredients[]" placeholder="Ex: 500g de farine" required>
+                                        <input type="text" name="ingredients" placeholder="Séparez vos ingrédients d'une virgule. Ex: 500g de farine, 1kg de patate" required>
                                         <button type="button" class="btn-remove">✕</button>
                                     </div>
                                 </div>
@@ -113,7 +162,7 @@
                             <div class="dynamic-section">
                                 <div id="instructions-container">
                                     <div class="instruction-item">
-                                        <textarea name="instructions[]" placeholder="Étape 1: Décrivez la première étape..." required></textarea>
+                                        <textarea name="instructions" placeholder="Séparez chaque étape d'un saut à la ligne. Étape 1: Décrivez la première étape..." required></textarea>
                                         <button type="button" class="btn-remove">✕</button>
                                     </div>
                                 </div>
@@ -121,7 +170,8 @@
                             </div>
                         </div>
                     </div>
-
+                    <!-- CSRF Token -->
+                    <input type="hidden" name="csrf_token" value="<?php echo generateCsrfToken(); ?>">
                     <!-- Form Actions -->
                     <div class="form-actions">
                         <button type="submit" class="btn-primary">Publier ma recette</button>

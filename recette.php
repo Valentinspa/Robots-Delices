@@ -1,12 +1,19 @@
 <?php
+session_start();
 require_once 'connexionBDD.php'; 
 if (!isset($_GET['recette']) || empty($_GET['recette'])) {
     header('Location: index.php');
     exit();
 }
+
+// Vérifier si l'utilisateur est connecté et si oui récupérer son ID
+// Si l'utilisateur n'est pas connecté, on initialise $userId à 0
+$userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0;
+
+// Récupérer la recette par son slug
 $slug = $_GET['recette'];
-$stmt = $pdo->prepare("SELECT * FROM recipes WHERE slug = ?");
-$stmt->execute([$slug]);
+$stmt = $pdo->prepare("SELECT recipes.*, category.category_name, category.category_logo, (recipes.id IN (SELECT recipe_id FROM favorites WHERE user_id = ?) ) as isFavorite FROM recipes LEFT JOIN category ON recipes.category_id = category.id WHERE slug = ?");
+$stmt->execute([$userId, $slug]);
 $recipe = $stmt->fetch();
 if (!$recipe) {
     header('Location: index.php');
@@ -21,8 +28,6 @@ $preparation = array_filter($preparation, function($step) {
 });
 $preparation = array_values($preparation);
 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -32,6 +37,8 @@ $preparation = array_values($preparation);
     <link rel="stylesheet" href="./navbar.css">
     <link rel="stylesheet" href="./recettes.css">
     <link rel="stylesheet" href="./footer.css">
+    <script src="api-favoris.js"defer></script>
+    <script src="share.js"defer></script>
     <title><?php echo $recipe['title']?>- Robots-Délices</title>
 </head>
 <body>
@@ -44,7 +51,7 @@ $preparation = array_values($preparation);
             <div class="breadcrumb">
                 <a href="./index.php">← Accueil</a>
                 <span>/</span>
-                <a href="./desserts.php">Desserts</a>
+                <a href="./desserts.php"><?php echo $recipe['category_name']?></a>
                 <span>/</span>
                 <span><?php echo $recipe['title']?></span>
             </div>
@@ -81,8 +88,8 @@ $preparation = array_values($preparation);
                     <span class="meta-label">Difficulté</span>
                 </div>
                 <div class="meta-item">
-                    <span class="meta-icon">🍰</span>
-                    <span class="meta-value">Desserts</span>
+                    <span class="meta-icon"><?php echo $recipe['category_logo']?></span>
+                    <span class="meta-value"><?php echo $recipe['category_name']?></span>
                     <span class="meta-label">Catégorie</span>
                 </div>
             </section>
@@ -125,9 +132,9 @@ $preparation = array_values($preparation);
                 </div>
 
                 <div class="recipe-actions">
-                    <a href="#" class="action-btn">🖨️ Imprimer</a>
-                    <a href="#" class="action-btn">📤 Partager</a>
-                    <a href="#" class="action-btn">❤️ Sauvegarder</a>
+                    <a href="#" class="action-btn" onclick="event.preventDefault();window.print()">🖨️ Imprimer</a>
+                    <a href="#" class="action-btn share-btn">📤 Partager</a>
+                    <a href="#" class="action-btn bouton-favoris" data-id="<?= $recipe['id'] ?>"><?= $recipe["isFavorite"]?"❤️":"🤍" ?><span> Favoris</span></a>
                 </div>
             </section>
         </div>

@@ -1,3 +1,25 @@
+<?php
+session_start();
+
+require_once 'connexionBDD.php';
+
+
+// Si l'utilisateur est connecté, on vérifie si les recettes populaires sont dans ses favoris
+if (isset($_SESSION['user_id'])) {
+    $userId = $_SESSION['user_id'];
+    // Récupérer les recettes favorites de l'utilisateur
+    $stmt = $pdo->prepare("SELECT recipe_id FROM favorites WHERE user_id = ?");
+    $stmt->execute([$userId]);
+    $favorites = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
+} else {
+    $favorites = [];
+}
+// récupérer les recettes populaires
+$stmt = $pdo->prepare("SELECT recipes.* FROM recipes WHERE popular = 1 ORDER BY created_at DESC LIMIT 3");
+$stmt->execute();
+$recipes = $stmt->fetchAll();
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,6 +28,7 @@
     <link rel="stylesheet" href="./navbar.css">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="footer.css">
+    <script src="api-favoris.js"defer></script>
     <title>Robots-Délices</title>
 </head>
 <body>
@@ -68,57 +91,27 @@
                     <p>Les favoris de notre communauté</p>
                 </div>
                 <div id="recettes-grid">
-                    <div class="recette-card">
-                        <div class="recette-image">
-                            <a href="./recette.php?recette=salade_cesar_2"><img src="./img/salade_cesar.jpg" alt="Image Salade César" /></a>
-                        </div>
-                        <div class="recettes-content">
-                            <div class="recette-summarize">
-                                <h3>Salade César</h3>
-                                <p>Une salade classique avec poulet grillé et croûtons</p>
-                                <span class="bouton-favoris">🤍</span>
+                    <?php foreach ($recipes as $recipe): ?>
+                        <div class="recette-card">
+                            <div class="recette-image">
+                                <a href="./recette.php?recette=<?php echo $recipe['slug']; ?>"><img src="<?php echo $recipe['photo']; ?>" alt="<?php echo $recipe['title']; ?>" /></a>
                             </div>
-                            <div class="recette-meta">
-                                <span>⏱️ 30 min</span>
-                                <span>👥 4 pers</span>
-                                <span>⭐ 4.8</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="recette-card">
-                        <div class="recette-image">
-                            <a href=""><img src="./img/spaghetti_carbonara.jpg" alt="Image Spaghetti Carbonara" /></a>
-                        </div>
-                        <div class="recettes-content">
-                            <div class="recette-summarize">
-                                <h3>Spaghetti Carbonara</h3>
-                                <p>Un plat italien crémeux et savoureux</p>
-                                <span class="bouton-favoris">❤️</span>
-                            </div>
-                            <div class="recette-meta">
-                                <span>⏱️ 30 min</span>
-                                <span>👥 6 pers</span>
-                                <span>⭐ 4.9</span>
+                            <div class="recettes-content">
+                                <div class="recette-summarize">
+                                    <h3><?php echo $recipe['title']; ?></h3>
+                                    <p><?php echo $recipe['description']; ?></p>
+                                    <span class="bouton-favoris" data-id="<?php echo $recipe['id']; ?>">
+                                        <?php echo in_array($recipe['id'], $favorites) ? '❤️' : '🤍'; ?>
+                                    </span>
+                                </div>
+                                <div class="recette-meta">
+                                    <span>⏱️ <?php echo $recipe['cooking_time']; ?></span>
+                                    <span>👥 <?php echo $recipe['number_persons']; ?> pers</span>
+                                    <span>⭐ 4.5</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="recette-card">
-                        <div class="recette-image">
-                            <a href="./recette.php?recette=tarte_aux_pommes_traditionnelle_1"><img src="./img/tarte_aux_pommes.jpg" alt="Image Tarte aux pommes" /></a>
-                        </div>
-                        <div class="recettes-content">
-                            <div class="recette-summarize">
-                                <h3>Tarte aux Pommes</h3>
-                                <p>Un dessert traditionnel français</p>
-                                <span class="bouton-favoris">🤍</span>
-                            </div>
-                            <div class="recette-meta">
-                                <span>⏱️ 45 min</span>
-                                <span>👥 8 pers</span>
-                                <span>⭐ 4.7</span>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </section>
         </div>

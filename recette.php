@@ -1,32 +1,56 @@
 <?php
+// Page de détail d'une recette - Affiche les informations complètes d'une recette
+// Récupère la recette via son slug (nom simplifié) dans l'URL
+
+// Démarrage de la session pour vérifier si l'utilisateur est connecté
 session_start();
 require_once 'connexionBDD.php'; 
+
+// Vérification de la présence du paramètre 'recette' dans l'URL
+// $_GET['recette'] contient le slug de la recette (ex: tarte-aux-pommes)
 if (!isset($_GET['recette']) || empty($_GET['recette'])) {
+    // Si pas de slug, rediriger vers l'accueil
     header('Location: index.php');
     exit();
 }
 
-// Vérifier si l'utilisateur est connecté et si oui récupérer son ID
-// Si l'utilisateur n'est pas connecté, on initialise $userId à 0
+// Vérification de l'état de connexion de l'utilisateur
+// Si connecté : récupère son ID pour les favoris
+// Si non connecté : utilise 0 comme ID par défaut
 $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0;
 
-// Récupérer la recette par son slug
-$slug = $_GET['recette'];
+// Récupération des détails de la recette depuis la base de données
+$slug = $_GET['recette']; // Slug de la recette depuis l'URL
+
+// Requête complexe qui récupère :
+// - Toutes les colonnes de la table recipes
+// - Le nom et logo de la catégorie (LEFT JOIN)
+// - Si la recette est en favoris pour cet utilisateur (sous-requête)
 $stmt = $pdo->prepare("SELECT recipes.*, category.category_name, category.category_logo, (recipes.id IN (SELECT recipe_id FROM favorites WHERE user_id = ?) ) as isFavorite FROM recipes LEFT JOIN category ON recipes.category_id = category.id WHERE slug = ?");
-$stmt->execute([$userId, $slug]);
-$recipe = $stmt->fetch();
+$stmt->execute([$userId, $slug]); // Premier ? = userId, deuxième ? = slug
+$recipe = $stmt->fetch(); // Récupère la recette ou false si pas trouvée
+
+// Si la recette n'existe pas, rediriger vers l'accueil
 if (!$recipe) {
     header('Location: index.php');
     exit();
 }
-$ingredients = explode(',', $recipe['ingredients']);
+
+// Traitement des ingrédients : conversion de chaîne en tableau
+// Les ingrédients sont stockés comme "ingrédient1,ingrédient2,ingrédient3"
+$ingredients = explode(',', $recipe['ingredients']); // Sépare par virgules
+
+// Traitement des instructions de préparation
+// Conversion des différents types de retours à la ligne en \n standard
 $preparation = str_replace(["\r\n","\r"], "\n", $recipe['instructions']);
-$preparation = explode("\n", $preparation);
-$preparation = array_map('trim', $preparation);
+$preparation = explode("\n", $preparation); // Sépare chaque ligne
+$preparation = array_map('trim', $preparation); // Supprime espaces début/fin de chaque ligne
+
+// Supprime les lignes vides
 $preparation = array_filter($preparation, function($step) {
-    return !empty($step);
+    return !empty($step); // Garde seulement les lignes non-vides
 });
-$preparation = array_values($preparation);
+$preparation = array_values($preparation); // Réindexe le tableau (0,1,2...)
 
 ?>
 <!DOCTYPE html>

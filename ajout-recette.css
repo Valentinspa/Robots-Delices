@@ -1,174 +1,254 @@
-/* === AJOUTER.CSS - Pour la page d'ajout de recette === */
+/* ===================================== */
+/* === PAGE D'AJOUT DE RECETTE ======== */
+/* ===================================== */
+/* Styles pour le formulaire de création de nouvelles recettes */
 
-/* Styles de base */
+/* === RESET CSS === */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0; /* Supprime marges par défaut */
+    padding: 0; /* Supprime espacements par défaut */
+    box-sizing: border-box; /* Largeur inclut bordures et paddings */
 }
 
+/* === STYLE GÉNÉRAL === */
 body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background: #f8fafc;
+    font-family: 'Arial', sans-serif; /* Police cohérente avec le site */
+    line-height: 1.6; /* Espacement confortable entre lignes */
+    color: #333; /* Texte gris foncé pour bonne lisibilité */
+    background: #f8fafc; /* Fond gris très clair */
 }
 
-/* === MAIN CONTENT === */
+/* === CONTENU PRINCIPAL === */
+/* Zone qui contient tout le formulaire d'ajout de recette */
 main {
-    padding-top: 120px; /* 100px header + 20px marge */
-    min-height: calc(100vh - 120px);
+    padding-top: 120px; /* Espace pour le header fixe (100px header + 20px marge) */
+    min-height: calc(100vh - 120px); /* Hauteur minimum pour remplir l'écran */
 }
 
+/* === CONTENEUR CENTRÉ === */
+/* Plus étroit que les autres pages car c'est un formulaire */
 .container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 20px;
+    max-width: 1000px; /* Plus étroit que la page d'accueil (1200px) */
+    margin: 0 auto; /* Centré horizontalement */
+    padding: 0 20px; /* Espace sur les côtés */
 }
 
-/* === BREADCRUMB === */
+/* ============================= */
+/* === FIL D'ARIANE =========== */
+/* ============================= */
+/* Navigation "Accueil > Ajouter une recette" */
+
+/* === CONTENEUR DU BREADCRUMB === */
 .breadcrumb {
-    background: white;
-    padding: 15px 25px;
-    border-radius: 8px;
-    margin-bottom: 30px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border: 1px solid #f1f5f9;
-    font-family: 'Arial', sans-serif;
+    /* APPARENCE */
+    background: white; /* Fond blanc */
+    border: 1px solid #f1f5f9; /* Bordure très légère */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre douce */
+    
+    /* ESPACEMENT */
+    padding: 15px 25px; /* Espace intérieur */
+    margin-bottom: 30px; /* Espace en dessous */
+    
+    /* TYPOGRAPHIE */
+    font-family: 'Arial', sans-serif; /* Police cohérente */
 }
 
+/* === LIENS CLIQUABLES === */
+/* Les liens du fil d'ariane */
 .breadcrumb a {
-    color: #6db4c4;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
+    color: #6db4c4; /* Bleu du thème */
+    text-decoration: none; /* Pas de soulignement */
+    font-weight: 500; /* Semi-gras */
+    transition: color 0.3s ease; /* Animation au hover */
 }
 
+/* === EFFET HOVER === */
 .breadcrumb a:hover {
-    color: #5aa3b3;
+    color: #5aa3b3; /* Bleu plus foncé au survol */
 }
 
+/* === SÉPARATEURS === */
+/* Les ">" entre les éléments */
 .breadcrumb span {
-    color: #64748b;
-    margin: 0 10px;
+    color: #64748b; /* Gris moyen */
+    margin: 0 10px; /* Espace autour */
 }
 
-/* === HERO SECTION === */
+/* ================================ */
+/* === BANNIÈRE D'INTRODUCTION === */
+/* ================================ */
+/* Section colorée qui présente la page d'ajout de recette */
+
+/* === CONTENEUR PRINCIPAL === */
 .add-recipe-hero {
-    background: linear-gradient(135deg, #6db4c4 0%, #5aa3b3 100%);
-    color: white;
-    padding: 50px 40px;
-    border-radius: 20px;
-    text-align: center;
-    margin-bottom: 40px;
-    box-shadow: 0 10px 30px rgba(109, 180, 196, 0.2);
-    position: relative;
-    overflow: hidden;
+    /* APPARENCE */
+    background: linear-gradient(135deg, #6db4c4 0%, #5aa3b3 100%); /* Dégradé bleu cohérent */
+    color: white; /* Texte blanc sur fond coloré */
+    border-radius: 20px; /* Coins arrondis */
+    box-shadow: 0 10px 30px rgba(109, 180, 196, 0.2); /* Ombre colorée */
+    
+    /* ESPACEMENT */
+    padding: 50px 40px; /* Espace intérieur */
+    margin-bottom: 40px; /* Espace vers le formulaire */
+    
+    /* ALIGNEMENT */
+    text-align: center; /* Tout centré */
+    
+    /* POSITIONNEMENT */
+    position: relative; /* Pour éventuels éléments décoratifs */
+    overflow: hidden; /* Cache les débordements */
 }
 
+/* === TITRE PRINCIPAL === */
+/* "Ajouter une nouvelle recette" */
 .add-recipe-hero h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    letter-spacing: -0.5px;
+    font-size: 2.5rem; /* Grande taille (40px environ) */
+    font-weight: 700; /* Très gras */
+    margin-bottom: 15px; /* Espace en dessous */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre pour lisibilité */
+    letter-spacing: -0.5px; /* Lettres légèrement rapprochées */
 }
 
+/* === SOUS-TITRE EXPLICATIF === */
+/* Texte qui explique comment utiliser la page */
 .add-recipe-hero p {
-    font-size: 1.1rem;
-    font-weight: 300;
-    margin-bottom: 30px;
-    opacity: 0.95;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6;
+    font-size: 1.1rem; /* Taille légèrement supérieure */
+    font-weight: 300; /* Texte fin */
+    margin-bottom: 30px; /* Espace en dessous */
+    opacity: 0.95; /* Légèrement transparent */
+    max-width: 600px; /* Largeur limitée pour lisibilité */
+    margin-left: auto; /* Centrage automatique */
+    margin-right: auto; /* Centrage automatique */
+    line-height: 1.6; /* Espacement confortable */
 }
 
-/* === FORM CONTAINER === */
+/* =============================== */
+/* === CONTENEUR DU FORMULAIRE === */
+/* =============================== */
+/* Boîte blanche qui contient tous les champs du formulaire */
+
 .form-container {
-    background: white;
-    border-radius: 20px;
-    padding: 40px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(109, 180, 196, 0.1);
-    margin-bottom: 40px;
+    /* APPARENCE */
+    background: white; /* Fond blanc pour contraster avec le fond gris de la page */
+    border-radius: 20px; /* Coins arrondis */
+    border: 1px solid rgba(109, 180, 196, 0.1); /* Bordure très légère bleutée */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Ombre douce */
+    
+    /* ESPACEMENT */
+    padding: 40px; /* Espace intérieur généreux */
+    margin-bottom: 40px; /* Espace en dessous */
 }
 
+/* ============================= */
+/* === ORGANISATION DU FORMULAIRE === */
+/* ============================= */
+/* Structure en grille pour organiser les champs */
+
+/* === GRILLE PRINCIPALE === */
 .form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-bottom: 30px;
+    display: grid; /* Utilise CSS Grid */
+    grid-template-columns: 1fr 1fr; /* Deux colonnes égales */
+    gap: 30px; /* Espace entre les colonnes */
+    margin-bottom: 30px; /* Espace en dessous */
 }
 
+/* === SECTIONS DU FORMULAIRE === */
+/* Chaque groupe de champs (Informations, Ingrédients, Instructions) */
 .form-section {
-    display: flex;
-    flex-direction: column;
+    display: flex; /* Utilise flexbox */
+    flex-direction: column; /* Éléments empilés verticalement */
 }
 
+/* === SECTION PLEINE LARGEUR === */
+/* Pour les sections qui prennent les deux colonnes */
 .form-section.full-width {
-    grid-column: 1 / -1;
+    grid-column: 1 / -1; /* S'étend de la première à la dernière colonne */
 }
 
+/* === TITRES DES SECTIONS === */
+/* Les titres "Informations générales", "Ingrédients", etc. */
 .form-section h3 {
-    color: #6db4c4;
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid rgba(109, 180, 196, 0.2);
+    color: #6db4c4; /* Bleu du thème */
+    font-size: 1.3rem; /* Taille importante */
+    font-weight: 700; /* Très gras */
+    margin-bottom: 20px; /* Espace en dessous */
+    padding-bottom: 10px; /* Espace avant la bordure */
+    border-bottom: 2px solid rgba(109, 180, 196, 0.2); /* Ligne de séparation bleutée */
 }
 
-/* === FORM STYLES === */
+/* ================================ */
+/* === STYLES DES CHAMPS ========= */
+/* ================================ */
+/* Apparence des inputs, textarea, select */
+
+/* === GROUPES DE CHAMPS === */
+/* Conteneur de chaque champ avec son label */
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* Espace entre chaque champ */
 }
 
+/* === LABELS DES CHAMPS === */
+/* Les étiquettes "Nom de la recette", "Description", etc. */
 .form-group label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: #1e293b;
-    font-size: 14px;
+    display: block; /* Prend toute la largeur */
+    font-weight: 600; /* Semi-gras */
+    margin-bottom: 8px; /* Espace avant le champ */
+    color: #1e293b; /* Gris très foncé */
+    font-size: 14px; /* Taille standard */
 }
 
+/* === CHAMPS DE SAISIE === */
+/* Styles communs pour tous les types de champs */
 .form-group input,
 .form-group textarea,
 .form-group select {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 16px;
-    font-family: inherit;
-    transition: border-color 0.3s ease;
-    background-color: #f8f9fa;
-    box-sizing: border-box;
+    /* DIMENSIONS */
+    width: 100%; /* Prend toute la largeur */
+    padding: 15px; /* Espace intérieur généreux */
+    box-sizing: border-box; /* Inclut padding et border dans la largeur */
+    
+    /* APPARENCE */
+    background-color: #f8f9fa; /* Fond gris très clair */
+    border: 1px solid #e0e0e0; /* Bordure grise */
+    border-radius: 8px; /* Coins arrondis */
+    
+    /* TYPOGRAPHIE */
+    font-size: 16px; /* Taille assez grande pour mobile */
+    font-family: inherit; /* Hérite de la police du parent */
+    
+    /* ANIMATION */
+    transition: border-color 0.3s ease; /* Animation de la bordure */
 }
 
+/* === ÉTAT FOCUS DES CHAMPS === */
+/* Quand l'utilisateur clique dans un champ */
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
-    outline: none;
-    border-color: #6db4c4;
-    background-color: white;
+    outline: none; /* Supprime le contour bleu par défaut */
+    border-color: #6db4c4; /* Bordure bleu du thème */
+    background-color: white; /* Fond blanc pour bien voir le texte */
 }
 
+/* === ZONES DE TEXTE === */
+/* Spécifications pour les textarea (descriptions, instructions) */
 .form-group textarea {
-    resize: vertical;
-    min-height: 120px;
+    resize: vertical; /* Permet seulement le redimensionnement vertical */
+    min-height: 120px; /* Hauteur minimum */
 }
 
+/* === CHAMPS DE FICHIER === */
+/* Styling spécial pour l'upload d'image */
 .form-group input[type="file"] {
-    padding: 15px;
-    background: white;
-    border: 2px dashed #6db4c4;
-    border-radius: 8px;
-    cursor: pointer;
-    text-align: center;
-    position: relative;
-    transition: all 0.3s ease;
+    padding: 15px; /* Espace intérieur */
+    background: white; /* Fond blanc */
+    border: 2px dashed #6db4c4; /* Bordure pointillée bleu */
+    border-radius: 8px; /* Coins arrondis */
+    cursor: pointer; /* Curseur de main */
+    text-align: center; /* Texte centré */
+    position: relative; /* Pour d'éventuels éléments décoratifs */
+    transition: all 0.3s ease; /* Animations fluides */
 }
 
 .form-group input[type="file"]:hover {

@@ -1,423 +1,608 @@
-/* === SECTION D'ACCUEIL === */
+/* ===================================== */
+/* ==== FEUILLE DE STYLE PRINCIPALE ==== */
+/* ===================================== */
+/* Ce fichier contient tous les styles pour la page d'accueil du site Robots-Délices */
+
+/* === CONFIGURATION GLOBALE === */
+/* Définit la police pour toutes les sections principales */
 #section-container, #accueil, #categories, #recettes {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Arial', sans-serif; /* Police propre et lisible */
 }
 
+/* === STRUCTURE PRINCIPALE === */
+/* Le "main" contient tout le contenu principal de la page */
 main {
-    padding-top: 120px; /* 100px header + 20px marge */
-    min-height: calc(100vh - 120px);
+    padding-top: 120px; /* Espace en haut pour éviter que le header couvre le contenu (100px header + 20px de marge) */
+    min-height: calc(100vh - 120px); /* Prend toute la hauteur de l'écran moins l'espace du header */
 }
+
+/* =============================== */
+/* ===== SECTION D'ACCUEIL ====== */
+/* =============================== */
+/* La bannière principale avec titre, sous-titre et barre de recherche */
 
 #accueil {
+    /* ARRIÈRE-PLAN : Dégradé bleu du clair au foncé */
     background: linear-gradient(135deg, #6db4c4 0%, #5aa3b3 100%);
-    padding: 60px 20px 60px;
-    text-align: center;
-    height: 480px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-    margin-top: -120px;
-    padding-top: 200px; /* 100px header + 100px espace */
+    
+    /* ESPACEMENT */
+    padding: 60px 20px 60px; /* Espace intérieur : haut, côtés, bas */
+    height: 480px; /* Hauteur fixe de la section */
+    
+    /* ALIGNEMENT DU CONTENU */
+    text-align: center; /* Tout le texte centré */
+    display: flex; /* Utilise flexbox pour l'alignement */
+    flex-direction: column; /* Éléments empilés verticalement */
+    justify-content: center; /* Centre verticalement */
+    align-items: center; /* Centre horizontalement */
+    
+    /* POSITIONNEMENT */
+    position: relative; /* Pour pouvoir positionner des éléments par-dessus */
+    overflow: hidden; /* Cache tout ce qui dépasse */
+    margin-top: -120px; /* Remonte la section pour qu'elle passe sous le header */
+    padding-top: 200px; /* Compense en ajoutant de l'espace en haut (100px header + 100px espace) */
 }
 
-/* Titre principal */
+/* === TITRE PRINCIPAL === */
+/* Le grand titre "Robots-Délices" ou équivalent */
 #accueil h1 {
-    color: white;
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin: 0 0 15px 0;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    letter-spacing: -0.5px;
-    line-height: 1.2;
+    color: white; /* Texte blanc pour contraster avec le fond bleu */
+    font-size: 2.5rem; /* Très grande taille (40px environ) */
+    font-weight: 700; /* Texte très gras */
+    margin: 0 0 15px 0; /* Pas d'espace au-dessus, 15px en dessous */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère pour plus de lisibilité */
+    letter-spacing: -0.5px; /* Rapproche légèrement les lettres */
+    line-height: 1.2; /* Espacement entre les lignes */
 }
 
-/* Sous-titre */
+/* === SOUS-TITRE === */
+/* La description sous le titre principal */
 #accueil p {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 1.1rem;
-    font-weight: 300;
-    margin: 0 0 40px 0;
-    max-width: 600px;
-    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9); /* Blanc presque transparent pour un effet plus doux */
+    font-size: 1.1rem; /* Taille moyenne (17-18px) */
+    font-weight: 300; /* Texte fin */
+    margin: 0 0 40px 0; /* 40px d'espace en dessous */
+    max-width: 600px; /* Largeur maximum pour éviter des lignes trop longues */
+    line-height: 1.6; /* Espacement confortable entre les lignes */
 }
 
-/* Container de la barre de recherche */
+/* ============================= */
+/* === BARRE DE RECHERCHE ===== */
+/* ============================= */
+/* La zone de recherche au centre de la bannière d'accueil */
+
 #search-bar {
-    display: flex;
-    background: white;
-    border-radius: 50px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    padding: 8px;
-    max-width: 500px;
-    width: 100%;
-    margin: 0 auto;
-    transition: all 0.3s ease;
+    /* DISPOSITION */
+    display: flex; /* Affiche input et bouton côte à côte */
+    
+    /* APPARENCE */
+    background: white; /* Fond blanc pour contraster avec le bleu */
+    border-radius: 50px; /* Bordures très arrondies (style "pill") */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Ombre douce en dessous */
+    
+    /* DIMENSIONNEMENT */
+    padding: 8px; /* Petit espace intérieur */
+    max-width: 500px; /* Largeur maximum */
+    width: 100%; /* Prend toute la largeur disponible (jusqu'à max-width) */
+    margin: 0 auto; /* Centré horizontalement */
+    
+    /* ANIMATION */
+    transition: all 0.3s ease; /* Animation douce pour tous les changements */
 }
 
+/* === EFFET HOVER DE LA BARRE === */
+/* Animation quand on survole la barre de recherche */
 #search-bar:hover {
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
-    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15); /* Ombre plus forte */
+    transform: translateY(-2px); /* Légère élévation */
 }
 
-/* Input de recherche */
+/* === CHAMP DE SAISIE === */
+/* L'input où l'utilisateur tape sa recherche */
 #search-bar input[type="text"] {
-    flex: 1;
-    border: none;
-    outline: none;
-    padding: 16px 24px;
-    font-size: 1rem;
-    border-radius: 50px;
-    background: transparent;
-    color: #333;
+    flex: 1; /* Prend tout l'espace disponible */
+    border: none; /* Pas de bordure */
+    outline: none; /* Pas de contour bleu au focus */
+    padding: 16px 24px; /* Espacement intérieur confortable */
+    font-size: 1rem; /* Taille de texte normale */
+    border-radius: 50px; /* Bordures arrondies comme le parent */
+    background: transparent; /* Fond transparent */
+    color: #333; /* Texte gris foncé */
 }
 
+/* === TEXTE D'AIDE (PLACEHOLDER) === */
+/* Le texte qui disparaît quand on écrit */
 #search-bar input[type="text"]::placeholder {
-    color: #999;
-    font-weight: 400;
+    color: #999; /* Gris plus clair que le texte normal */
+    font-weight: 400; /* Texte fin */
 }
 
+/* === FOCUS SUR L'INPUT === */
+/* Quand on clique dans le champ de recherche */
 #search-bar input[type="text"]:focus {
-    outline: none;
+    outline: none; /* Supprime le contour bleu par défaut */
 }
 
-/* Bouton de recherche */
+/* === BOUTON DE RECHERCHE === */
+/* Le bouton orange "Rechercher" */
 #search-bar button {
-    background: linear-gradient(45deg, #f39c12, #e67e22);
-    color: white;
-    border: none;
-    padding: 16px 32px;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-    box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
+    /* APPARENCE */
+    background: linear-gradient(45deg, #f39c12, #e67e22); /* Dégradé orange */
+    color: white; /* Texte blanc */
+    border: none; /* Pas de bordure */
+    
+    /* DIMENSIONNEMENT */
+    padding: 16px 32px; /* Espacement intérieur généreux */
+    border-radius: 50px; /* Bordures très arrondies */
+    
+    /* TYPOGRAPHIE */
+    font-size: 1rem; /* Taille normale */
+    font-weight: 600; /* Texte semi-gras */
+    white-space: nowrap; /* Empêche le texte de passer à la ligne */
+    
+    /* INTERACTIVITÉ */
+    cursor: pointer; /* Curseur de main au survol */
+    transition: all 0.3s ease; /* Animation douce pour tous les changements */
+    
+    /* OMBRE */
+    box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3); /* Ombre orange douce */
 }
 
+/* === EFFET HOVER DU BOUTON === */
+/* Animation quand on survole le bouton */
 #search-bar button:hover {
-    background: linear-gradient(45deg, #e67e22, #d68910);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(243, 156, 18, 0.4);
+    background: linear-gradient(45deg, #e67e22, #d68910); /* Dégradé plus foncé */
+    transform: translateY(-1px); /* Légère élévation */
+    box-shadow: 0 6px 20px rgba(243, 156, 18, 0.4); /* Ombre plus forte */
 }
 
+/* === EFFET CLIC DU BOUTON === */
+/* Animation quand on clique sur le bouton */
 #search-bar button:active {
-    transform: translateY(0);
+    transform: translateY(0); /* Revient à sa position normale */
 }
 
-/* === SECTION CATÉGORIES === */
+/* ======================================= */
+/* ===== SECTION DES CATÉGORIES ========= */
+/* ======================================= */
+/* Affiche les différentes catégories de recettes (Entrées, Plats, Desserts...) */
+
+/* === CONTENEUR PRINCIPAL === */
 #categories {
-    background: #f8fafc;
-    padding: 80px 20px;
+    background: #f8fafc; /* Fond gris très clair pour contraster avec l'accueil */
+    padding: 80px 20px; /* Beaucoup d'espace vertical + espace horizontal */
 }
 
+/* === EN-TÊTE DE SECTION === */
+/* Le titre et sous-titre de la section catégories */
 #categories-title {
-    text-align: center;
-    margin-bottom: 60px;
+    text-align: center; /* Tout centré */
+    margin-bottom: 60px; /* Grand espace avant les cartes */
 }
 
+/* === TITRE "NOS CATÉGORIES" === */
 #categories-title h2 {
-    color: #6db4c4;
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin: 0 0 15px 0;
-    letter-spacing: -0.5px;
+    color: #6db4c4; /* Bleu cohérent avec le thème du site */
+    font-size: 2.5rem; /* Très grande taille (40px environ) */
+    font-weight: 700; /* Très gras */
+    margin: 0 0 15px 0; /* Espace en dessous uniquement */
+    letter-spacing: -0.5px; /* Rapproche légèrement les lettres (plus élégant) */
 }
 
+/* === SOUS-TITRE DE LA SECTION === */
 #categories-title p {
-    color: #64748b;
-    font-size: 1.1rem;
-    font-weight: 400;
-    margin: 0;
-    max-width: 600px;
-    margin: 0 auto;
+    color: #64748b; /* Gris moyen pour description */
+    font-size: 1.1rem; /* Légèrement plus grand que normal */
+    font-weight: 400; /* Texte normal, pas gras */
+    margin: 0; /* Pas de marge par défaut */
+    max-width: 600px; /* Largeur limitée pour lisibilité */
+    margin: 0 auto; /* Centré horizontalement */
 }
 
-/* Grille des catégories */
+/* === GRILLE DES CARTES CATÉGORIES === */
+/* Organisation des cartes en grille responsive */
 #categories-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    display: grid; /* Utilise CSS Grid pour la mise en page */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Colonnes automatiques, minimum 280px chacune */
+    gap: 30px; /* Espace entre les cartes */
+    max-width: 1200px; /* Largeur maximum du conteneur */
+    margin: 0 auto; /* Centré horizontalement */
+    padding: 0 20px; /* Espace sur les côtés */
 }
 
-/* Cartes de catégories */
+/* === CARTES INDIVIDUELLES === */
+/* Chaque carte représente une catégorie (Entrées, Plats, Desserts...) */
 .categories-card {
-    background: white;
-    border-radius: 20px;
-    padding: 40px 30px;
-    text-align: center;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
-    cursor: pointer;
-    border: 1px solid rgba(109, 180, 196, 0.1);
-    position: relative;
-    overflow: hidden;
+    /* APPARENCE */
+    background: white; /* Fond blanc */
+    border-radius: 20px; /* Coins arrondis */
+    border: 1px solid rgba(109, 180, 196, 0.1); /* Bordure très légère */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Ombre douce */
+    
+    /* CONTENU */
+    padding: 40px 30px; /* Espace intérieur généreux */
+    text-align: center; /* Tout centré dans la carte */
+    
+    /* INTERACTIVITÉ */
+    cursor: pointer; /* Indique qu'on peut cliquer */
+    transition: all 0.3s ease; /* Animations fluides */
+    
+    /* POSITIONNEMENT */
+    position: relative; /* Pour pouvoir ajouter des éléments par-dessus */
+    overflow: hidden; /* Cache tout ce qui dépasse */
 }
 
+/* === EFFET HOVER DES CARTES === */
+/* Animation quand on survole une carte */
 .categories-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 40px rgba(109, 180, 196, 0.15);
-    border-color: rgba(109, 180, 196, 0.3);
+    transform: translateY(-8px); /* Élévation de la carte */
+    box-shadow: 0 12px 40px rgba(109, 180, 196, 0.15); /* Ombre plus forte et colorée */
+    border-color: rgba(109, 180, 196, 0.3); /* Bordure plus visible */
 }
 
+/* === BARRE COLORÉE EN HAUT === */
+/* Effet décoratif qui apparaît au hover */
 .categories-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(135deg, #6db4c4, #5aa3b3);
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
+    content: ''; /* Élément vide (juste décoratif) */
+    position: absolute; /* Positionné par rapport à la carte */
+    top: 0; /* Collé en haut */
+    left: 0; /* Commence à gauche */
+    right: 0; /* S'étend jusqu'à droite */
+    height: 4px; /* Hauteur fine */
+    background: linear-gradient(135deg, #6db4c4, #5aa3b3); /* Dégradé bleu */
+    transform: scaleX(0); /* Invisible par défaut (largeur 0) */
+    transition: transform 0.3s ease; /* Animation fluide */
 }
 
+/* === ANIMATION DE LA BARRE === */
+/* La barre apparaît au hover */
 .categories-card:hover::before {
-    transform: scaleX(1);
+    transform: scaleX(1); /* La barre s'étend sur toute la largeur */
 }
 
-/* Icônes des catégories */
+/* === ICÔNES DES CATÉGORIES === */
+/* Les émojis ou icônes au centre de chaque carte */
 .categories-icons {
-    font-size: 3.5rem;
-    margin-bottom: 20px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, rgba(109, 180, 196, 0.1), rgba(90, 163, 179, 0.1));
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 25px;
-    transition: all 0.3s ease;
+    /* TAILLE ET POLICE */
+    font-size: 3.5rem; /* Très grande taille pour les émojis */
+    
+    /* POSITIONNEMENT */
+    display: flex; /* Pour centrer l'icône */
+    align-items: center; /* Centre verticalement */
+    justify-content: center; /* Centre horizontalement */
+    
+    /* DIMENSIONS */
+    width: 80px; /* Largeur du cercle */
+    height: 80px; /* Hauteur du cercle */
+    border-radius: 50%; /* Forme circulaire */
+    
+    /* ESPACEMENT */
+    margin: 0 auto 25px; /* Centré + espace en dessous */
+    
+    /* APPARENCE */
+    background: linear-gradient(135deg, rgba(109, 180, 196, 0.1), rgba(90, 163, 179, 0.1)); /* Fond bleu très léger */
+    
+    /* ANIMATION */
+    transition: all 0.3s ease; /* Animation fluide pour les changements */
 }
 
+/* === EFFET HOVER SUR LES ICÔNES === */
+/* Animation de l'icône quand on survole la carte */
 .categories-card:hover .categories-icons {
-    background: linear-gradient(135deg, rgba(109, 180, 196, 0.2), rgba(90, 163, 179, 0.2));
-    transform: scale(1.1);
+    background: linear-gradient(135deg, rgba(109, 180, 196, 0.2), rgba(90, 163, 179, 0.2)); /* Fond plus intense */
+    transform: scale(1.1); /* Agrandissement de 10% */
 }
 
-/* Titres des catégories */
+/* === TITRES DES CATÉGORIES === */
+/* Le nom de la catégorie (ex: "Entrées", "Plats principaux") */
 .categories-card h3 {
-    color: #1e293b;
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin: 0 0 10px 0;
-    line-height: 1.3;
+    color: #1e293b; /* Gris très foncé pour contraste */
+    font-size: 1.4rem; /* Taille importante mais lisible */
+    font-weight: 700; /* Très gras pour attirer l'attention */
+    margin: 0 0 10px 0; /* Espace en dessous uniquement */
+    line-height: 1.3; /* Espacement entre lignes serré */
 }
 
-/* Descriptions des catégories */
+/* === DESCRIPTIONS DES CATÉGORIES === */
+/* Texte explicatif sous le titre */
 .categories-card p {
-    color: #64748b;
-    font-size: 0.95rem;
-    font-weight: 400;
-    margin: 0;
-    line-height: 1.5;
+    color: #64748b; /* Gris moyen, moins important que le titre */
+    font-size: 0.95rem; /* Légèrement plus petit que la normale */
+    font-weight: 400; /* Texte normal, pas gras */
+    margin: 0; /* Pas de marge */
+    line-height: 1.5; /* Espacement confortable pour la lecture */
 }
 
-/* === SECTION RECETTES === */
+/* ===================================== */
+/* ===== SECTION DES RECETTES ========= */
+/* ===================================== */
+/* Affiche les recettes populaires ou récentes avec leurs images et détails */
+
+/* === CONTENEUR PRINCIPAL === */
 #recettes {
-    background: white;
-    padding: 80px 20px;
+    background: white; /* Fond blanc pour contraster avec la section catégories grise */
+    padding: 80px 20px; /* Grand espace vertical + espace horizontal */
 }
 
+/* === EN-TÊTE DE SECTION === */
+/* Titre et sous-titre de la section recettes */
 #recettes-title {
-    text-align: center;
-    margin-bottom: 60px;
+    text-align: center; /* Tout centré */
+    margin-bottom: 60px; /* Grand espace avant les cartes */
 }
 
+/* === TITRE "NOS RECETTES" === */
 #recettes-title h2 {
-    color: #6db4c4;
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin: 0 0 15px 0;
-    letter-spacing: -0.5px;
+    color: #6db4c4; /* Bleu cohérent avec les catégories */
+    font-size: 2.5rem; /* Même taille que les catégories */
+    font-weight: 700; /* Très gras */
+    margin: 0 0 15px 0; /* Espace en dessous uniquement */
+    letter-spacing: -0.5px; /* Lettres légèrement rapprochées */
 }
 
+/* === SOUS-TITRE DE LA SECTION === */
 #recettes-title p {
-    color: #64748b;
-    font-size: 1.1rem;
-    font-weight: 400;
-    margin: 0;
-    max-width: 600px;
-    margin: 0 auto;
+    color: #64748b; /* Gris moyen pour la description */
+    font-size: 1.1rem; /* Légèrement plus grand que normal */
+    font-weight: 400; /* Texte normal */
+    margin: 0; /* Pas de marge par défaut */
+    max-width: 600px; /* Largeur limitée pour lisibilité */
+    margin: 0 auto; /* Centré horizontalement */
 }
 
-/* Grille des recettes */
+/* === GRILLE DES CARTES RECETTES === */
+/* Organisation en grille responsive des recettes */
 #recettes-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    display: grid; /* Utilise CSS Grid */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Colonnes automatiques, minimum 350px */
+    gap: 30px; /* Espace entre les cartes */
+    max-width: 1200px; /* Largeur maximum */
+    margin: 0 auto; /* Centré horizontalement */
+    padding: 0 20px; /* Espace sur les côtés */
 }
 
-/* Cartes de recettes */
+/* === CARTES INDIVIDUELLES DES RECETTES === */
+/* Chaque carte représente une recette avec image, titre, description */
 .recette-card {
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
-    cursor: pointer;
-    border: 1px solid rgba(226, 232, 240, 0.8);
-    overflow: hidden;
-    position: relative;
+    /* APPARENCE */
+    background: white; /* Fond blanc */
+    border-radius: 20px; /* Coins arrondis */
+    border: 1px solid rgba(226, 232, 240, 0.8); /* Bordure gris clair */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Ombre douce */
+    
+    /* INTERACTIVITÉ */
+    cursor: pointer; /* Indique qu'on peut cliquer */
+    transition: all 0.3s ease; /* Animations fluides */
+    
+    /* POSITIONNEMENT */
+    position: relative; /* Pour positionner des éléments internes */
+    overflow: hidden; /* Cache les débordements (important pour les images) */
 }
 
+/* === EFFET HOVER DES CARTES RECETTES === */
+/* Animation quand on survole une carte de recette */
 .recette-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 40px rgba(109, 180, 196, 0.15);
-    border-color: rgba(109, 180, 196, 0.3);
+    transform: translateY(-8px); /* Élévation de la carte */
+    box-shadow: 0 12px 40px rgba(109, 180, 196, 0.15); /* Ombre plus forte et colorée */
+    border-color: rgba(109, 180, 196, 0.3); /* Bordure bleutée visible */
 }
 
-/* Images des recettes */
+/* === IMAGES DES RECETTES === */
+/* Conteneur de l'image en haut de chaque carte */
 .recette-image {
-    position: relative;
-    height: 220px;
-    overflow: hidden;
-    border-radius: 20px 20px 0 0;
+    position: relative; /* Pour positionner des éléments par-dessus l'image */
+    height: 220px; /* Hauteur fixe pour uniformité */
+    overflow: hidden; /* Cache les parties qui dépassent */
+    border-radius: 20px 20px 0 0; /* Coins arrondis seulement en haut */
 }
 
+/* === IMAGE ELLE-MÊME === */
+/* L'image de la recette (ex: photo d'une tarte) */
 .recette-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
+    width: 100%; /* Prend toute la largeur disponible */
+    height: 100%; /* Prend toute la hauteur du conteneur */
+    object-fit: cover; /* Couvre tout l'espace sans déformation */
+    transition: transform 0.3s ease; /* Animation douce pour l'effet zoom */
 }
 
+/* === EFFET ZOOM SUR L'IMAGE === */
+/* L'image s'agrandit légèrement au hover de la carte */
 .recette-card:hover .recette-image img {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Agrandissement de 5% */
 }
 
-/* Contenu des recettes */
+/* ============================= */
+/* === CONTENU DES RECETTES === */
+/* ============================= */
+/* Tout le texte sous l'image (titre, description, métadonnées) */
+
+/* === CONTENEUR DU TEXTE === */
 .recettes-content {
-    padding: 25px;
+    padding: 25px; /* Espace généreux autour du contenu */
 }
 
+/* === ZONE TITRE ET DESCRIPTION === */
+/* Contient le titre, la description et le bouton favoris */
 .recette-summarize {
-    position: relative;
-    margin-bottom: 20px;
+    position: relative; /* Pour positionner le bouton favoris en absolu */
+    margin-bottom: 20px; /* Espace avant les métadonnées */
 }
 
-/* Bouton favoris */
+/* ============================= */
+/* === BOUTON FAVORIS (COEUR) === */
+/* ============================= */
+/* Le petit bouton en forme de coeur en haut à droite */
+
 .bouton-favoris {
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(4px);
+    /* POSITIONNEMENT */
+    position: absolute; /* Positionné par rapport au .recette-summarize */
+    top: 0; /* Collé en haut */
+    right: 0; /* Collé à droite */
+    
+    /* APPARENCE */
+    background: rgba(255, 255, 255, 0.9); /* Fond blanc semi-transparent */
+    border-radius: 50%; /* Forme circulaire */
+    backdrop-filter: blur(4px); /* Effet de flou en arrière-plan */
+    
+    /* DIMENSIONS */
+    width: 40px; /* Largeur du cercle */
+    height: 40px; /* Hauteur du cercle */
+    
+    /* CONTENU */
+    display: flex; /* Pour centrer l'émoji */
+    align-items: center; /* Centre verticalement */
+    justify-content: center; /* Centre horizontalement */
+    font-size: 1.5rem; /* Taille de l'émoji coeur */
+    
+    /* INTERACTIVITÉ */
+    cursor: pointer; /* Curseur de main */
+    transition: all 0.3s ease; /* Animations fluides */
 }
 
+/* === EFFET HOVER DU BOUTON FAVORIS === */
 .bouton-favoris:hover {
-    transform: scale(1.1);
-    background: rgba(255, 255, 255, 1);
+    transform: scale(1.1); /* Agrandissement de 10% */
+    background: rgba(255, 255, 255, 1); /* Fond complètement blanc */
 }
 
-/* Titres des recettes */
+/* === TITRES DES RECETTES === */
+/* Le nom de la recette (ex: "Tarte aux Pommes") */
 .recette-summarize h3 {
-    color: #1e293b;
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin: 0 0 10px 0;
-    line-height: 1.3;
-    padding-right: 50px;
+    color: #1e293b; /* Gris très foncé pour bon contraste */
+    font-size: 1.5rem; /* Taille importante pour attirer l'attention */
+    font-weight: 700; /* Très gras */
+    margin: 0 0 10px 0; /* Espace en dessous uniquement */
+    line-height: 1.3; /* Espacement serré entre lignes */
+    padding-right: 50px; /* Espace à droite pour éviter le bouton favoris */
 }
 
-/* Descriptions des recettes */
+/* === DESCRIPTIONS DES RECETTES === */
+/* Courte description sous le titre */
 .recette-summarize p {
-    color: #64748b;
-    font-size: 0.95rem;
-    font-weight: 400;
-    margin: 0;
-    line-height: 1.5;
-    padding-right: 50px;
+    color: #64748b; /* Gris moyen, moins important que le titre */
+    font-size: 0.95rem; /* Légèrement plus petit que normal */
+    font-weight: 400; /* Texte normal */
+    margin: 0; /* Pas de marge */
+    line-height: 1.5; /* Espacement confortable */
+    padding-right: 50px; /* Espace à droite pour le bouton favoris */
 }
 
-/* Métadonnées des recettes */
+/* ======================================= */
+/* === MÉTADONNÉES DES RECETTES ========= */
+/* ======================================= */
+/* Informations complémentaires : temps, difficulté, nombre de personnes */
+
+/* === CONTENEUR DES MÉTADONNÉES === */
 .recette-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid rgba(226, 232, 240, 0.8);
-    padding-top: 20px;
-    flex-wrap: wrap;
-    gap: 10px;
+    /* DISPOSITION */
+    display: flex; /* Éléments sur la même ligne */
+    justify-content: space-between; /* Répartis uniformément */
+    align-items: center; /* Alignés verticalement */
+    flex-wrap: wrap; /* Passe à la ligne si nécessaire */
+    gap: 10px; /* Espace entre les éléments */
+    
+    /* APPARENCE */
+    border-top: 1px solid rgba(226, 232, 240, 0.8); /* Ligne de séparation en haut */
+    
+    /* ESPACEMENT */
+    padding-top: 20px; /* Espace au-dessus de la ligne */
 }
 
+/* === ÉLÉMENTS INDIVIDUELS === */
+/* Chaque information (temps, difficulté, etc.) */
 .recette-meta span {
-    color: #64748b;
-    font-size: 0.9rem;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    background: rgba(109, 180, 196, 0.1);
-    padding: 6px 12px;
-    border-radius: 20px;
-    transition: all 0.3s ease;
+    /* APPARENCE */
+    color: #64748b; /* Gris moyen */
+    background: rgba(109, 180, 196, 0.1); /* Fond bleu très léger */
+    border-radius: 20px; /* Forme de pilule */
+    
+    /* TYPOGRAPHIE */
+    font-size: 0.9rem; /* Petite taille */
+    font-weight: 500; /* Semi-gras */
+    
+    /* DISPOSITION */
+    display: flex; /* Pour aligner icône + texte */
+    gap: 5px; /* Espace entre l'icône et le texte */
+    
+    /* ESPACEMENT */
+    padding: 6px 12px; /* Espace intérieur */
+    
+    /* ANIMATION */
+    transition: all 0.3s ease; /* Animations fluides */
 }
 
+/* === EFFET HOVER DES MÉTADONNÉES === */
+/* Animation quand on survole une métadonnée */
 .recette-meta span:hover {
-    background: rgba(109, 180, 196, 0.2);
-    transform: translateY(-1px);
+    background: rgba(109, 180, 196, 0.2); /* Fond plus intense */
+    transform: translateY(-1px); /* Légère élévation */
 }
 
-/* === ANIMATIONS === */
+/* ======================================== */
+/* === ANIMATIONS D'APPARITION ========== */
+/* ======================================== */
+/* Animations pour faire apparaître les éléments de manière fluide */
+
+/* === ANIMATION "FADE IN UP" === */
+/* L'élément apparaît en montant depuis le bas avec un effet de fondu */
 @keyframes fadeInUp {
     from {
-        opacity: 0;
-        transform: translateY(30px);
+        opacity: 0; /* Complètement transparent au début */
+        transform: translateY(30px); /* Décalé de 30px vers le bas */
     }
     to {
-        opacity: 1;
-        transform: translateY(0);
+        opacity: 1; /* Complètement visible à la fin */
+        transform: translateY(0); /* À sa position finale */
     }
 }
 
+/* === ANIMATION "SLIDE IN UP" === */
+/* Similaire à fadeInUp mais avec un mouvement plus prononcé */
 @keyframes slideInUp {
     from {
-        opacity: 0;
-        transform: translateY(40px);
+        opacity: 0; /* Transparent au début */
+        transform: translateY(40px); /* Décalé de 40px vers le bas (plus que fadeInUp) */
     }
     to {
-        opacity: 1;
-        transform: translateY(0);
+        opacity: 1; /* Complètement visible à la fin */
+        transform: translateY(0); /* À sa position finale */
     }
 }
 
+/* ======================================= */
+/* === APPLICATION DES ANIMATIONS ====== */
+/* ======================================= */
+/* Définit quels éléments utilisent quelles animations */
+
+/* === ANIMATION DU CONTENU D'ACCUEIL === */
+/* Le titre et sous-titre de la section d'accueil apparaissent en premier */
 #accueil > div:first-child {
-    animation: fadeInUp 0.8s ease-out;
+    animation: fadeInUp 0.8s ease-out; /* Animation douce de 0.8 secondes */
 }
 
+/* === ANIMATION DE LA BARRE DE RECHERCHE === */
+/* La barre apparaît 0.2s après le titre pour un effet séquentiel */
 #search-bar {
-    animation: fadeInUp 0.8s ease-out 0.2s both;
+    animation: fadeInUp 0.8s ease-out 0.2s both; 
+    /* 0.8s durée, 0.2s délai, "both" applique les styles before et after */
 }
 
+/* === ANIMATION DES CARTES DE RECETTES === */
+/* Toutes les cartes utilisent slideInUp (mouvement plus prononcé) */
 .recette-card {
-    animation: slideInUp 0.6s ease-out;
+    animation: slideInUp 0.6s ease-out; /* Plus rapide que les titres (0.6s) */
 }
 
-.recette-card:nth-child(1) { animation-delay: 0.1s; }
-.recette-card:nth-child(2) { animation-delay: 0.2s; }
-.recette-card:nth-child(3) { animation-delay: 0.3s; }
+/* === DÉLAIS SÉQUENTIELS POUR LES CARTES === */
+/* Chaque carte apparaît légèrement après la précédente */
+.recette-card:nth-child(1) { animation-delay: 0.1s; } /* 1ère carte : 0.1s */
+.recette-card:nth-child(2) { animation-delay: 0.2s; } /* 2ème carte : 0.2s */
+.recette-card:nth-child(3) { animation-delay: 0.3s; } /* 3ème carte : 0.3s */
 
-/* ===== BREAKPOINTS HARMONISÉS ===== */
+/* ================================================================== */
+/* === DESIGN RESPONSIVE (MEDIA QUERIES) ======================= */
+/* ================================================================== */
+/* Adaptations pour différentes tailles d'écran : mobile, tablette, desktop */
 
 /* Desktop Large (1200px+) */
 @media (min-width: 1200px) {

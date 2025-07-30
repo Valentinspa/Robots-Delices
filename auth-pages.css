@@ -1,164 +1,257 @@
-/* === AUTH-PAGES.CSS - Pour login.html, register.html et mdp-oublié.html === */
+/* ================================================ */
+/* === PAGES D'AUTHENTIFICATION ================= */
+/* ================================================ */
+/* Styles pour login.php, register.php et mdp-oublié.php */
 
-/* Styles de base */
+/* === STYLE GÉNÉRAL === */
 body {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
+    margin: 0; /* Pas de marge */
+    padding: 0; /* Pas d'espacement */
+    min-height: 100vh; /* Prend toute la hauteur de l'écran */
 }
 
+/* === CONTENEUR PRINCIPAL === */
+/* Centre la boîte de connexion sur la page */
 main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 100px); /* 100px header */
-    padding: 120px 20px 20px; /* 100px header + 20px marge */
-    background: linear-gradient(135deg, #f5d7d0 0%, #f8e6e1 100%);
+    display: flex; /* Utilise flexbox pour centrer */
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    min-height: calc(100vh - 100px); /* Hauteur totale moins le header */
+    padding: 120px 20px 20px; /* Espace pour le header fixe + marges */
+    background: linear-gradient(135deg, #f5d7d0 0%, #f8e6e1 100%); /* Fond dégradé orange/rose */
 }
 
+/* === POLICE GLOBALE === */
+/* Définit la police pour tous les éléments des pages d'auth */
 #section-container, #login-container, .right-section {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Arial', sans-serif; /* Police cohérente avec le site */
 }
 
+/* ================================ */
+/* === BOÎTE DE CONNEXION ======== */
+/* ================================ */
+/* La carte principale qui contient tout le système d'authentification */
+
+/* === CONTENEUR PRINCIPAL === */
 #section-container {
-    display: flex;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    max-width: 900px;
-    width: 100%;
-    min-height: 500px;
-    margin-top: 0;
+    /* DISPOSITION */
+    display: flex; /* Divise en deux parties : gauche (logo) et droite (formulaire) */
+    
+    /* APPARENCE */
+    background: white; /* Fond blanc */
+    border-radius: 20px; /* Coins arrondis */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Grande ombre douce */
+    overflow: hidden; /* Cache les débordements */
+    
+    /* DIMENSIONNEMENT */
+    max-width: 900px; /* Largeur maximum */
+    width: 100%; /* Prend toute la largeur disponible */
+    min-height: 500px; /* Hauteur minimum */
+    margin-top: 0; /* Pas d'espace en haut */
 }
 
-/* === SECTION GAUCHE (IDENTIQUE POUR TOUTES LES PAGES) === */
+/* ================================== */
+/* === PARTIE GAUCHE (LOGO + TEXTE) === */
+/* ================================== */
+/* Section bleue identique sur toutes les pages d'authentification */
+
 #login-container {
-    background: linear-gradient(135deg, #6db4c4 0%, #5aa3b3 100%);
-    color: white;
-    padding: 60px 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    flex: 1;
-    min-width: 350px;
+    /* APPARENCE */
+    background: linear-gradient(135deg, #6db4c4 0%, #5aa3b3 100%); /* Dégradé bleu du thème */
+    color: white; /* Texte blanc */
+    
+    /* DISPOSITION */
+    display: flex; /* Utilise flexbox */
+    flex-direction: column; /* Éléments empilés verticalement */
+    justify-content: center; /* Centré verticalement */
+    align-items: center; /* Centré horizontalement */
+    text-align: center; /* Texte centré */
+    
+    /* DIMENSIONS */
+    flex: 1; /* Prend la moitié de l'espace */
+    min-width: 350px; /* Largeur minimum */
+    
+    /* ESPACEMENT */
+    padding: 60px 40px; /* Espace intérieur */
 }
 
+/* === LOGO DANS LA PARTIE GAUCHE === */
+/* Le logo du site avec fond blanc */
 #login-container #logo {
-    width: 160px;
-    height: 160px;
-    margin-bottom: 30px;
-    background: white;
-    border-radius: 15px;
-    padding: 20px;
+    width: 160px; /* Largeur fixe */
+    height: 160px; /* Hauteur fixe */
+    margin-bottom: 30px; /* Espace en dessous */
+    background: white; /* Fond blanc pour le logo */
+    border-radius: 15px; /* Coins arrondis */
+    padding: 20px; /* Espace intérieur pour le logo */
 }
 
+/* === TEXTE DESCRIPTIF === */
+/* Message d'accueil ou de description */
 #login-container p {
-    font-size: 16px;
-    line-height: 1.6;
-    margin: 0;
-    opacity: 0.95;
+    font-size: 16px; /* Taille normale */
+    line-height: 1.6; /* Espacement confortable */
+    margin: 0; /* Pas de marge */
+    opacity: 0.95; /* Légèrement transparent pour effet doux */
 }
 
-/* === SECTION DROITE (VARIABLE SELON LA PAGE) === */
+/* ===================================== */
+/* === PARTIE DROITE (FORMULAIRES) === */
+/* ===================================== */
+/* Section qui contient les formulaires de connexion, inscription, etc. */
+
+/* === CONTENEUR PRINCIPAL DROITE === */
 .right-section {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    min-width: 350px;
+    /* DISPOSITION */
+    flex: 1; /* Prend l'autre moitié de l'espace */
+    display: flex; /* Utilise flexbox pour organiser le contenu */
+    flex-direction: column; /* Éléments empilés verticalement */
+    
+    /* DIMENSIONS */
+    min-width: 350px; /* Largeur minimum pour éviter compression */
 }
 
-/* Container pour les onglets (login et register uniquement) */
+/* =============================== */
+/* === SYSTÈME D'ONGLETS ======== */
+/* =============================== */
+/* Pour basculer entre "Connexion" et "Inscription" */
+
+/* === CONTENEUR DES ONGLETS === */
 .tabs-container {
-    display: flex;
-    border-bottom: 1px solid #e0e0e0;
-    padding: 40px 40px 0 40px;
+    /* DISPOSITION */
+    display: flex; /* Onglets côte à côte */
+    
+    /* APPARENCE */
+    border-bottom: 1px solid #e0e0e0; /* Ligne de séparation en bas */
+    
+    /* ESPACEMENT */
+    padding: 40px 40px 0 40px; /* Espace autour, pas en bas */
 }
 
+/* === LIENS DES ONGLETS === */
+/* Les boutons "Connexion" et "Inscription" */
 .tabs-container a {
-    text-decoration: none;
-    padding: 15px 0;
-    margin-right: 40px;
-    color: #999;
-    font-weight: 500;
-    font-size: 16px;
-    border-bottom: 2px solid transparent;
-    transition: all 0.3s ease;
-    position: relative;
+    text-decoration: none; /* Pas de soulignement */
+    padding: 15px 0; /* Espace vertical */
+    margin-right: 40px; /* Espace entre les onglets */
+    color: #999; /* Gris clair pour les onglets inactifs */
+    font-weight: 500; /* Semi-gras */
+    font-size: 16px; /* Taille normale */
+    border-bottom: 2px solid transparent; /* Bordure invisible par défaut */
+    transition: all 0.3s ease; /* Animations fluides */
+    position: relative; /* Pour d'éventuels effets */
 }
 
+/* === ONGLET ACTIF === */
+/* L'onglet sélectionné (Connexion ou Inscription) */
 .tabs-container a.active {
-    color: #333;
-    border-bottom-color: #6db4c4;
+    color: #333; /* Gris foncé pour l'onglet actif */
+    border-bottom-color: #6db4c4; /* Barre bleue en dessous */
 }
 
+/* === EFFET HOVER DES ONGLETS === */
 .tabs-container a:hover {
-    color: #333;
+    color: #333; /* Gris foncé au survol */
 }
 
-/* Container pour le contenu du formulaire */
+/* ======================================= */
+/* === CONTENEUR DU FORMULAIRE ========== */
+/* ======================================= */
+/* Zone qui contient tous les champs de saisie */
+
 #form-container {
-    padding: 40px 40px 60px 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex-grow: 1;
+    /* ESPACEMENT */
+    padding: 40px 40px 60px 40px; /* Plus d'espace en bas */
+    
+    /* DISPOSITION */
+    display: flex; /* Utilise flexbox */
+    flex-direction: column; /* Éléments empilés verticalement */
+    justify-content: center; /* Centre le contenu verticalement */
+    flex-grow: 1; /* Prend l'espace restant */
 }
 
-/* === STYLES COMMUNS POUR TOUS LES FORMULAIRES === */
+/* ==================================== */
+/* === STYLES DES FORMULAIRES ======== */
+/* ==================================== */
+/* Apparence commune pour connexion, inscription, mot de passe oublié */
+
+/* === STRUCTURE DU FORMULAIRE === */
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
+    display: flex; /* Utilise flexbox */
+    flex-direction: column; /* Champs empilés verticalement */
+    gap: 25px; /* Espace entre chaque groupe de champs */
 }
 
+/* === GROUPES DE CHAMPS === */
+/* Chaque div qui contient label + input */
 form > div {
-    display: flex;
-    flex-direction: column;
+    display: flex; /* Utilise flexbox */
+    flex-direction: column; /* Label au-dessus, input en dessous */
 }
 
+/* === LABELS === */
+/* Étiquettes des champs : "Email", "Mot de passe", etc. */
 form label {
-    font-weight: 500;
-    margin-bottom: 8px;
-    color: #333;
-    font-size: 14px;
+    font-weight: 500; /* Semi-gras */
+    margin-bottom: 8px; /* Espace avant le champ */
+    color: #333; /* Gris foncé */
+    font-size: 14px; /* Petite taille */
 }
 
+/* === CHAMPS DE SAISIE === */
+/* Tous les inputs (email, mot de passe, nom...) */
 form input {
-    padding: 15px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
-    background-color: #f8f9fa;
-    box-sizing: border-box;
+    /* ESPACEMENT */
+    padding: 15px; /* Espace intérieur confortable */
+    box-sizing: border-box; /* Inclut padding dans la largeur */
+    
+    /* APPARENCE */
+    background-color: #f8f9fa; /* Fond gris très clair */
+    border: 1px solid #e0e0e0; /* Bordure gris clair */
+    border-radius: 8px; /* Coins arrondis */
+    
+    /* TYPOGRAPHIE */
+    font-size: 16px; /* Taille correcte pour mobile */
+    
+    /* ANIMATION */
+    transition: border-color 0.3s ease; /* Changement de bordure fluide */
 }
 
+/* === ÉTAT FOCUS === */
+/* Quand l'utilisateur clique dans un champ */
 form input:focus {
-    outline: none;
-    border-color: #6db4c4;
-    background-color: white;
+    outline: none; /* Supprime le contour bleu par défaut */
+    border-color: #6db4c4; /* Bordure bleu du thème */
+    background-color: white; /* Fond blanc pour contraste */
 }
 
+/* === BOUTONS DE SOUMISSION === */
+/* Boutons "Se connecter", "S'inscrire", "Envoyer" */
 form button {
-    background: linear-gradient(135deg, #6db4c4 0%, #5aa3b3 100%);
-    color: white;
-    border: none;
-    padding: 15px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    margin-top: 10px;
+    /* APPARENCE */
+    background: linear-gradient(135deg, #6db4c4 0%, #5aa3b3 100%); /* Dégradé bleu */
+    color: white; /* Texte blanc */
+    border: none; /* Pas de bordure */
+    border-radius: 8px; /* Coins arrondis */
+    
+    /* TYPOGRAPHIE */
+    font-size: 16px; /* Taille lisible */
+    font-weight: 600; /* Semi-gras */
+    
+    /* ESPACEMENT */
+    padding: 15px; /* Espace intérieur généreux */
+    margin-top: 10px; /* Petit espace au-dessus */
+    
+    /* INTERACTIVITÉ */
+    cursor: pointer; /* Curseur de main */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animations */
 }
 
+/* === EFFET HOVER DES BOUTONS === */
 form button:hover {
-    background: linear-gradient(135deg, #5aa3b3 0%, #4a929f 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(109, 180, 196, 0.3);
+    background: linear-gradient(135deg, #5aa3b3 0%, #4a929f 100%); /* Dégradé plus foncé */
+    transform: translateY(-2px); /* Élévation */
+    box-shadow: 0 5px 15px rgba(109, 180, 196, 0.3); /* Ombre colorée */
 }
 
 form button:active {

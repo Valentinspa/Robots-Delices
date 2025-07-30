@@ -1,32 +1,43 @@
 <?php
-session_start();
-// Include database connection
-require_once 'connexionBDD.php'; 
-require_once "csrf.php"; // Include CSRF protection
+// Page d'ajout de recette - Permet aux utilisateurs connectés d'ajouter une nouvelle recette
+// Inclut validation des données, upload d'image et protection CSRF
 
+session_start(); // Démarrage de la session
+require_once 'connexionBDD.php'; // Connexion à la base de données
+require_once "csrf.php"; // Protection contre les attaques CSRF
+
+// Récupération de toutes les catégories disponibles pour le formulaire
 $categories = $pdo->query("SELECT * FROM category")->fetchAll();
-// var_dump($categories);
+// var_dump($categories); // Ligne de debug commentée
 
+// Traitement du formulaire d'ajout de recette (méthode POST)
 if($_SERVER['REQUEST_METHOD'] === 'POST') 
 {
-// <script>alert("BANANA HACK")</script>
-    // Initialize variables
-    $titre = htmlspecialchars($_POST['titre']) ?? '';
-    $categorie = htmlspecialchars($_POST['categorie']) ?? '';
-    $difficulte = htmlspecialchars($_POST['difficulte']) ?? 'facile';
-    $temps_preparation = htmlspecialchars($_POST['temps-preparation']) ?? '';
-    $portions = htmlspecialchars($_POST['portions']) ?? 1;
-    $description = htmlspecialchars($_POST['description']) ?? '';
-    $ingredients = htmlspecialchars($_POST['ingredients']) ?? "";
-    $instructions = htmlspecialchars($_POST['instructions']) ?? "";
+    // Récupération et sécurisation des données du formulaire
+    // htmlspecialchars() protège contre les attaques XSS
+    // ?? '' définit une valeur par défaut si le champ est vide
+    $titre = htmlspecialchars($_POST['titre']) ?? ''; // Titre de la recette
+    $categorie = htmlspecialchars($_POST['categorie']) ?? ''; // ID de catégorie
+    $difficulte = htmlspecialchars($_POST['difficulte']) ?? 'facile'; // Niveau de difficulté
+    $temps_preparation = htmlspecialchars($_POST['temps-preparation']) ?? ''; // Temps en minutes
+    $portions = htmlspecialchars($_POST['portions']) ?? 1; // Nombre de portions
+    $description = htmlspecialchars($_POST['description']) ?? ''; // Description courte
+    $ingredients = htmlspecialchars($_POST['ingredients']) ?? ""; // Liste des ingrédients
+    $instructions = htmlspecialchars($_POST['instructions']) ?? ""; // Étapes de préparation
+    
+    // Génération du slug (URL-friendly) à partir du titre
+    // Convertit en minuscules et remplace caractères spéciaux par _
     $slug = strtolower(trim(preg_replace("/[^A-Za-z0-9à-üÀ-Ü-]+/", '_', $titre)));
 
+    // Vérification de l'unicité du slug et génération d'un suffixe si nécessaire
+    // Compte combien de recettes ont un slug similaire
     $totalSameRecipes = $pdo->prepare("SELECT COUNT(*) FROM recipes WHERE slug LIKE ?");
-    $totalSameRecipes->execute([$slug . '%']);
-
-    $count = $totalSameRecipes->fetchColumn();
+    $totalSameRecipes->execute([$slug . '%']); // Recherche slugs commençant par notre slug
     
-    $slug .= '_' . ($count + 1); // Append a number to make the slug unique
+    $count = $totalSameRecipes->fetchColumn(); // Nombre de slugs similaires trouvés
+    
+    // Ajoute un numéro pour rendre le slug unique (ex: tarte-pommes_2)
+    $slug .= '_' . ($count + 1);
     
     // Handle file upload
     $photo_path = '';

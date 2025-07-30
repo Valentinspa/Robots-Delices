@@ -1,168 +1,243 @@
-/* === RECIPE PAGE CSS - Pour les pages de recettes === */
+/* ===================================== */
+/* === PAGE DE RECETTE INDIVIDUELLE === */
+/* ===================================== */
+/* Styles pour afficher une recette spécifique avec ses détails */
 
-/* Styles de base */
+/* === RESET CSS === */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0; /* Supprime marges par défaut */
+    padding: 0; /* Supprime espacements par défaut */
+    box-sizing: border-box; /* Largeur inclut bordures et paddings */
 }
 
+/* === STYLE GÉNÉRAL === */
 body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background: #f8fafc;
+    font-family: 'Arial', sans-serif; /* Police utilisée sur tout le site */
+    line-height: 1.6; /* Espacement confortable entre lignes */
+    color: #333; /* Couleur de texte gris foncé */
+    background: #f8fafc; /* Fond gris très clair */
 }
 
-/* === MAIN CONTENT === */
+/* === CONTENU PRINCIPAL === */
+/* Zone principale qui contient toute la page de recette */
 main {
-    padding-top: 120px; /* 100px header + 20px marge */
-    min-height: calc(100vh - 120px);
+    padding-top: 120px; /* Espace pour le header fixe (100px header + 20px marge) */
+    min-height: calc(100vh - 120px); /* Hauteur minimum pour remplir l'écran */
 }
 
+/* === CONTENEUR CENTRÉ === */
+/* Limite la largeur du contenu et le centre */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    max-width: 1200px; /* Largeur maximum pour éviter des lignes trop longues */
+    margin: 0 auto; /* Centré horizontalement */
+    padding: 0 20px; /* Espace sur les côtés */
 }
 
-/* === BREADCRUMB === */
+/* ============================= */
+/* === FIL D'ARIANE (BREADCRUMB) === */
+/* ============================= */
+/* Navigation "Accueil > Recettes > Tarte aux pommes" */
+
+/* === CONTENEUR DU FIL D'ARIANE === */
 .breadcrumb {
-    background: white;
-    padding: 15px 25px;
-    border-radius: 8px;
-    margin-bottom: 30px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border: 1px solid #f1f5f9;
-    font-family: 'Arial', sans-serif;
+    /* APPARENCE */
+    background: white; /* Fond blanc */
+    border: 1px solid #f1f5f9; /* Bordure très légère */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    
+    /* ESPACEMENT */
+    padding: 15px 25px; /* Espace intérieur */
+    margin-bottom: 30px; /* Espace en dessous */
+    
+    /* TYPOGRAPHIE */
+    font-family: 'Arial', sans-serif; /* Police cohérente */
 }
 
+/* === LIENS DANS LE FIL D'ARIANE === */
+/* Les liens cliquables (Accueil, Recettes...) */
 .breadcrumb a {
-    color: #6db4c4;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
+    color: #6db4c4; /* Bleu du thème */
+    text-decoration: none; /* Pas de soulignement */
+    font-weight: 500; /* Semi-gras */
+    transition: color 0.3s ease; /* Animation douce au hover */
 }
 
+/* === EFFET HOVER DES LIENS === */
 .breadcrumb a:hover {
-    color: #5aa3b3;
+    color: #5aa3b3; /* Bleu plus foncé au survol */
 }
 
+/* === SÉPARATEURS DU FIL D'ARIANE === */
+/* Les ">" ou "•" entre les éléments */
 .breadcrumb span {
-    color: #64748b;
-    margin: 0 10px;
+    color: #64748b; /* Gris moyen */
+    margin: 0 10px; /* Espace autour des séparateurs */
 }
 
-/* === RECIPE HEADER === */
+/* ================================= */
+/* === EN-TÊTE DE LA RECETTE ====== */
+/* ================================= */
+/* Bannière colorée avec le nom de la recette et sa description */
+
+/* === BANNIÈRE PRINCIPALE === */
 .recipe-hero {
-    background: linear-gradient(135deg, #6db4c4 0%, #5aa3b3 100%);
-    color: white;
-    padding: 60px 40px;
-    border-radius: 20px;
-    text-align: center;
-    margin-bottom: 30px;
-    box-shadow: 0 10px 30px rgba(109, 180, 196, 0.2);
-    position: relative;
-    overflow: hidden;
+    /* APPARENCE */
+    background: linear-gradient(135deg, #6db4c4 0%, #5aa3b3 100%); /* Dégradé bleu comme l'accueil */
+    color: white; /* Texte blanc sur fond bleu */
+    border-radius: 20px; /* Coins arrondis */
+    box-shadow: 0 10px 30px rgba(109, 180, 196, 0.2); /* Ombre colorée */
+    
+    /* ESPACEMENT */
+    padding: 60px 40px; /* Espace généreux à l'intérieur */
+    margin-bottom: 30px; /* Espace en dessous */
+    
+    /* ALIGNEMENT */
+    text-align: center; /* Tout centré */
+    
+    /* POSITIONNEMENT */
+    position: relative; /* Pour pouvoir ajouter des éléments décoratifs */
+    overflow: hidden; /* Cache les débordements */
 }
 
+/* === TITRE DE LA RECETTE === */
+/* Le nom principal de la recette (ex: "Tarte aux Pommes") */
 .recipe-hero h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    letter-spacing: -0.5px;
+    font-size: 2.5rem; /* Très grande taille (40px environ) */
+    font-weight: 700; /* Très gras */
+    margin-bottom: 15px; /* Espace en dessous */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre pour améliorer la lisibilité */
+    letter-spacing: -0.5px; /* Rapproche les lettres pour un look moderne */
 }
 
+/* === DESCRIPTION DE LA RECETTE === */
+/* Texte descriptif sous le titre */
 .recipe-hero p {
-    font-size: 1.1rem;
-    font-weight: 300;
-    margin-bottom: 30px;
-    opacity: 0.95;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6;
+    font-size: 1.1rem; /* Taille légèrement supérieure à normale */
+    font-weight: 300; /* Texte fin */
+    margin-bottom: 30px; /* Espace en dessous */
+    opacity: 0.95; /* Légèrement transparent pour effet de contraste */
+    max-width: 600px; /* Largeur limitée pour lisibilité */
+    margin-left: auto; /* Centrage automatique */
+    margin-right: auto; /* Centrage automatique */
+    line-height: 1.6; /* Espacement confortable entre lignes */
 }
 
-/* === RECIPE META === */
+/* ======================================== */
+/* === MÉTADONNÉES DE LA RECETTE ========= */
+/* ======================================== */
+/* Informations pratiques : temps, difficulté, portions */
+
+/* === GRILLE DES MÉTADONNÉES === */
 .recipe-meta-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px;
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    margin-bottom: 30px;
-    border: 1px solid rgba(109, 180, 196, 0.1);
+    /* DISPOSITION */
+    display: grid; /* Utilise CSS Grid */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Colonnes auto, min 150px */
+    gap: 20px; /* Espace entre les éléments */
+    
+    /* APPARENCE */
+    background: white; /* Fond blanc */
+    border: 1px solid rgba(109, 180, 196, 0.1); /* Bordure légère */
+    border-radius: 20px; /* Coins arrondis */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Ombre douce */
+    
+    /* ESPACEMENT */
+    padding: 30px; /* Espace intérieur */
+    margin-bottom: 30px; /* Espace en dessous */
 }
 
+/* === ÉLÉMENTS INDIVIDUELS === */
+/* Chaque métadonnée (temps, difficulté, etc.) */
 .meta-item {
-    text-align: center;
-    padding: 20px 15px;
-    border-radius: 15px;
-    background: rgba(109, 180, 196, 0.05);
-    transition: all 0.3s ease;
+    /* DISPOSITION */
+    text-align: center; /* Contenu centré */
+    
+    /* APPARENCE */
+    background: rgba(109, 180, 196, 0.05); /* Fond bleu très léger */
+    border-radius: 15px; /* Coins arrondis */
+    
+    /* ESPACEMENT */
+    padding: 20px 15px; /* Espace intérieur */
+    
+    /* ANIMATION */
+    transition: all 0.3s ease; /* Effets fluides */
 }
 
+/* === EFFET HOVER DES MÉTADONNÉES === */
 .meta-item:hover {
-    background: rgba(109, 180, 196, 0.1);
-    transform: translateY(-2px);
+    background: rgba(109, 180, 196, 0.1); /* Fond plus intense */
+    transform: translateY(-2px); /* Légère élévation */
 }
 
+/* === ICÔNES DES MÉTADONNÉES === */
+/* Émojis ou icônes (⏰ 👨‍🍳 🍽️) */
 .meta-icon {
-    font-size: 2rem;
-    margin-bottom: 10px;
-    display: block;
+    font-size: 2rem; /* Grande taille pour visibilité */
+    margin-bottom: 10px; /* Espace en dessous */
+    display: block; /* Prend toute la largeur */
 }
 
+/* === VALEURS DES MÉTADONNÉES === */
+/* Les chiffres importants (30 min, Facile, 4 personnes) */
 .meta-value {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #6db4c4;
-    margin-bottom: 5px;
-    display: block;
+    font-size: 1.2rem; /* Taille importante */
+    font-weight: 700; /* Très gras */
+    color: #6db4c4; /* Bleu du thème */
+    margin-bottom: 5px; /* Petit espace en dessous */
+    display: block; /* Prend toute la largeur */
 }
 
+/* === LIBELLÉS DES MÉTADONNÉES === */
+/* Les descriptions (TEMPS, DIFFICULTÉ, PORTIONS) */
 .meta-label {
-    font-size: 0.9rem;
-    color: #64748b;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 500;
+    font-size: 0.9rem; /* Petite taille */
+    color: #64748b; /* Gris moyen */
+    text-transform: uppercase; /* TOUT EN MAJUSCULES */
+    letter-spacing: 1px; /* Espacement entre lettres */
+    font-weight: 500; /* Semi-gras */
 }
 
-/* === RECIPE IMAGE === */
+/* ================================= */
+/* === IMAGE DE LA RECETTE ======== */
+/* ================================= */
+/* Photo principale de la recette avec légende */
+
+/* === SECTION COMPLÈTE DE L'IMAGE === */
 .recipe-image-section {
-    background: white;
-    border-radius: 20px;
-    padding: 30px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(109, 180, 196, 0.1);
+    /* APPARENCE */
+    background: white; /* Fond blanc */
+    border: 1px solid rgba(109, 180, 196, 0.1); /* Bordure légère */
+    border-radius: 20px; /* Coins arrondis */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Ombre douce */
+    
+    /* ESPACEMENT */
+    padding: 30px; /* Espace intérieur */
+    margin-bottom: 30px; /* Espace en dessous */
 }
 
+/* === CONTENEUR DE L'IMAGE === */
 .recipe-image {
-    width: 100%;
-    height: 400px;
-    border-radius: 15px;
-    overflow: hidden;
-    margin-bottom: 15px;
+    width: 100%; /* Prend toute la largeur disponible */
+    height: 400px; /* Hauteur fixe pour uniformité */
+    border-radius: 15px; /* Coins arrondis */
+    overflow: hidden; /* Cache les parties qui dépassent */
+    margin-bottom: 15px; /* Espace avant la légende */
 }
 
+/* === IMAGE ELLE-MÊME === */
 .recipe-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 15px;
+    width: 100%; /* Remplit toute la largeur */
+    height: 100%; /* Remplit toute la hauteur */
+    object-fit: cover; /* Couvre tout l'espace sans déformation */
+    border-radius: 15px; /* Coins arrondis cohérents */
 }
 
+/* === LÉGENDE DE L'IMAGE === */
 .image-caption {
-    text-align: center;
-    color: #64748b;
-    font-style: italic;
-    font-size: 0.95rem;
+    text-align: center; /* Texte centré */
+    color: #64748b; /* Gris moyen */
+    font-style: italic; /* Texte en italique */
+    font-size: 0.95rem; /* Légèrement plus petit */
 }
 
 /* === RECIPE CONTENT GRID === */
@@ -413,13 +488,12 @@ main {
     }
     
     .recipe-content-grid {
-        grid-template-columns: 300px 1fr; /* CORRIGÉ: Gardons 2 colonnes sur tablette */
-        gap: 20px; /* CORRIGÉ: Gap réduit */
+        grid-template-columns: 300px 1fr;
+        gap: 20px;
     }
     
     .ingredients-sidebar {
-        position: static; /* CORRIGÉ: Désactiver sticky sur tablette aussi */
-        /* SUPPRIMÉ: order: -1; pour maintenir l'ordre gauche-droite */
+        position: static;
     }
     
     .recipe-meta-grid {
@@ -518,21 +592,18 @@ main {
     .recipe-content-grid {
         grid-template-columns: 1fr; /* MAINTENU: 1 colonne sur mobile */
         gap: 20px;
-        /* AJOUTÉ: Gestion de l'ordre sur mobile seulement */
         display: flex;
         flex-direction: column;
     }
     
     .ingredients-sidebar {
-        /* AJOUTÉ: Force l'affichage en premier sur mobile */
         order: -1;
-        /* CORRIGÉ: Désactiver le sticky sur mobile */
         position: static !important;
         top: auto !important;
     }
     
     .instructions-content {
-        /* AJOUTÉ: Force l'affichage en second sur mobile */
+        
         order: 0;
     }
     
@@ -590,7 +661,7 @@ main {
 /* Petit Mobile (480px et moins) */
 @media screen and (max-width: 480px) {
     main {
-        padding-top: 90px; /* 70px header + 20px marge */
+        padding-top: 90px;
         min-height: calc(100vh - 90px);
     }
     
@@ -648,7 +719,6 @@ main {
     }
     
     .ingredients-sidebar {
-        /* CORRIGÉ: Désactiver sticky sur petit mobile aussi */
         position: static !important;
         top: auto !important;
     }

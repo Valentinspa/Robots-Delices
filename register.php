@@ -119,15 +119,15 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
     
-    // Si aucune erreur de validation, proc\u00e9der \u00e0 la cr\u00e9ation du compte\n    
-    if (!isset($error)) {        // Hachage s\u00e9curis\u00e9 du mot de passe\n        // password_hash() utilise un algorithme s\u00e9curis\u00e9 (bcrypt par d\u00e9faut)\n        // Le mot de passe n'est JAMAIS stock\u00e9 en clair dans la base\n        
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);        // Insertion du nouvel utilisateur dans la base de donn\u00e9es\n        
-        try {            // Requ\u00eate pr\u00e9par\u00e9e pour ins\u00e9rer les donn\u00e9es de fa\u00e7on s\u00e9curis\u00e9e\n            
+    // Si aucune erreur de validation, procéder à la création du compte   
+    if (!isset($error)) {        // Hachage sécurisé du mot de passe      // password_hash() utilise un algorithme sécurisé (bcrypt par défaut)       // Le mot de passe n'est JAMAIS stocké en clair dans la base       
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);        // Insertion du nouvel utilisateur dans la base de données       
+        try {            // Requête préparée pour insérer les données de façon sécurisé         
             $stmt = $pdo->prepare("INSERT INTO users (firstname, lastname, email, password) VALUES (?, ?, ?, ?)");            
-            $stmt->execute([$prenom, $nom, $email, $hashedPassword]);// Inscription r\u00e9ussie : redirection vers la page de connexion\n            
+            $stmt->execute([$prenom, $nom, $email, $hashedPassword]);// Inscription réussie : redirection vers la page de connexion        
             header('Location: login.php');        
-            exit(); // Important : arr\u00eater le script apr\u00e8s redirection\n        
-            } catch (PDOException $e) {           // Gestion des erreurs d'insertion en base\n            
+            exit(); // Important : arrêter le script apres redirection    
+            } catch (PDOException $e) {           // Gestion des erreurs d'insertion en base          
                 $error = "Erreur lors de l'inscription : " . $e->getMessage();       
             }    
         }
